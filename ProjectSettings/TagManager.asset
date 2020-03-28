@@ -4,7 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Planet
+  - Planets
+  - Bullet
+  - Target
+  - Power Meter
+  - Win Text
+  - Win Text Canvas
   layers:
   - Default
   - TransparentFX
