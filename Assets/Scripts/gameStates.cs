@@ -19,6 +19,7 @@ public class gameStates : MonoBehaviour
   private TextMeshPro winnerTxt;
   private TextMeshPro playerTxt;
   private GameObject bullet;
+  
 
 
     // Start is called before the first frame update
