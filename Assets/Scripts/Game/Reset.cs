@@ -22,12 +22,12 @@ public class Reset : MonoBehaviour
     {
         bullet = GameObject.FindGameObjectWithTag("Bullet");
     }
-    void ResetRound(){    
+    public void ResetRound(){    
         GameObject target = GameObject.FindGameObjectWithTag("Target");
         // Show target
         target.gameObject.GetComponent<MeshRenderer>().enabled = true;
         // Re-enable target
-        target.GetComponent<target>().movingTarget = true;
+        target.GetComponent<target>().targetActive = true;
         // Let bullet be shot again
         bullet.GetComponent<firingBullet>().shotFired = false;        
         // Remove force from bullet
@@ -57,10 +57,4 @@ public class Reset : MonoBehaviour
        
     }
 
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

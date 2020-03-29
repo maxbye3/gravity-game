@@ -14,14 +14,8 @@ public class loser : MonoBehaviour
       // Int the win text that displays the winner
       winnerTxt = GameObject.FindGameObjectWithTag("Win Text").GetComponent<TextMeshPro>();        
       winnerTxt.enabled = false;  
-       // Player text that displays whose turn it is (needs to be hidden)
+       // Player text that displays whose turn it is (needs to be hidden
       playerTxt = GameObject.FindGameObjectWithTag("Player Text").GetComponent<TextMeshPro>();
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
         
     }
 
@@ -36,9 +30,6 @@ public class loser : MonoBehaviour
       * - Int intro with countdown and new ship entering the battle
       */
     public void Loser(string player){
-      // change state to intro
-
-
       // lets other scripts know whose lost
       string lostPlayer = player;
 
@@ -63,13 +54,18 @@ public class loser : MonoBehaviour
         GameObject.FindGameObjectWithTag("Red Explosion").GetComponent<ParticleSystem>().Play();        
       }
 
-        // Make all bullets inactive.
-        GameObject[] bullets = GameObject.FindGameObjectsWithTag("Bullet");
-        foreach (GameObject bullet in bullets)
-        {
-          bullet.gameObject.SetActive(false);
-        }
-        // Rescale the power meter to original size.
-        GameObject.FindGameObjectWithTag("Power Meter").GetComponent<power>().ResetPowerMeter();
+      // Make all bullets inactive.
+
+        GameObject.FindGameObjectWithTag("Bullet").gameObject.GetComponent<MeshRenderer>().enabled = false;
+      // GameObject[] bullets = GameObject.FindGameObjectsWithTag("Bullet");
+      // foreach (GameObject bullet in bullets)
+      // {
+      // }
+      // Rescale the power meter to original size.
+      GameObject.FindGameObjectWithTag("Power Meter").GetComponent<power>().ResetPowerMeter();
+      // change state to intro
+      GetComponent<gameStates>().gameState = "intro";
+      // launch intro
+      GameObject.FindGameObjectWithTag("Intro").GetComponent<intro>().StartGame();
     }
 }

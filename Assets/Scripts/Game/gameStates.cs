@@ -11,6 +11,7 @@ public class gameStates : MonoBehaviour
 
   public string lostPlayer; // player that lost
   public string activePlayer; // whose round is it
+  public string gameState; // whose round is it
 
 
     // Start is called before the first frame update
@@ -19,8 +20,16 @@ public class gameStates : MonoBehaviour
       activePlayer = "Red";
       // Green enters arena
       lostPlayer = "Green";
+      // Plays intro first
+      //  GameObject.FindGameObjectWithTag("Intro").GetComponent<intro>().StartGame();
+      // Global game state
+      //  gameState = "intro";
+      // Starts the game immediately (uncomment and comment line 24)
        GetComponent<whoseTurn>().IntTurn(activePlayer);
+       gameState = "game";
+    }
 
+    void Update(){
     }
 
    

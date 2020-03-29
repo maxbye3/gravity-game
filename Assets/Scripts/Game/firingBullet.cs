@@ -44,7 +44,11 @@ public class firingBullet : MonoBehaviour
       int powerLevel = power.GetComponent<power>().powerLevel;
 
       
-      if(powerLevel != 0 && !shotFired){ // If power level is defined then fire the bullet.
+      if(
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().gameState == "game" // We are in game state (not intro)
+        && powerLevel != 0 // If power level is defined 
+        && !shotFired // Shots have not been defined
+      ){ 
         FireBullet(powerLevel);
       } 
       

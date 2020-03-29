@@ -16,6 +16,7 @@ TagManager:
   - Red
   - Red Explosion
   - Countdown
+  - Intro
   layers:
   - Default
   - TransparentFX

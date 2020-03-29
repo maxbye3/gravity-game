@@ -12,16 +12,19 @@ public class whoseTurn : MonoBehaviour
     void Start()
     {
         // Int the player text that displays whose turn it is
-        playerTxt = GameObject.FindGameObjectWithTag("Player Text").GetComponent<TextMeshPro>();
-        bullet = GameObject.FindGameObjectWithTag("Bullet");
-        // TEMP: Red player starts
-        IntTurn(GetComponent<gameStates>().activePlayer);
+        
+        
+       
     }
 
     // Update is called once per frame
-    void Update()
+    void ShowInGame()
     {
-        
+      GameObject.FindGameObjectWithTag("Bullet").gameObject.GetComponent<MeshRenderer>().enabled = true;
+      GameObject.FindGameObjectWithTag("Target").gameObject.GetComponent<MeshRenderer>().enabled = true;
+      GameObject.FindGameObjectWithTag("Power Meter").gameObject.GetComponentInChildren<MeshRenderer>().enabled = true;
+      playerTxt.enabled = true;
+      GameObject.FindGameObjectWithTag("Win Text").GetComponent<TextMeshPro>().enabled = false;
     }
 
      /*
@@ -30,6 +33,11 @@ public class whoseTurn : MonoBehaviour
     * - Show and re-enable the target 
     */
     public void IntTurn(string player){
+        bullet = GameObject.FindGameObjectWithTag("Bullet");
+        playerTxt = GameObject.FindGameObjectWithTag("Player Text").GetComponent<TextMeshPro>();
+        // global game state
+        GetComponent<gameStates>().gameState = "game";
+        ShowInGame();
         if(player == "Red"){
           // Text
           playerTxt.SetText("Red's turn");
