@@ -10,6 +10,11 @@ TagManager:
   - Power Meter
   - Win Text
   - Win Text Canvas
+  - Player Text
+  - Green Explosion
+  - Green
+  - Red
+  - Red Explosion
   layers:
   - Default
   - TransparentFX

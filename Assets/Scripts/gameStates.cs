@@ -10,53 +10,74 @@ public class gameStates : MonoBehaviour
   * Sets all the parameters if a game is won or a round is reset.
   */
 
-  private GameObject bullet;
   public float offScreenRight = 10;
   public float offScreenLeft = -10;
   public float offScreenTop = 6;
   public float offScreenBottom = -6;
-  private TextMeshPro textmeshPro;
+  public GameObject playerStart;
+  private string activePlayer;
+  private TextMeshPro winnerTxt;
+  private TextMeshPro playerTxt;
+  private GameObject bullet;
+
+
+    // Start is called before the first frame update
+    void Start()
+    {
+      bullet = GameObject.FindGameObjectWithTag("Bullet");
+      // int bullet game object
+      // Int the win text that displays the winner
+      winnerTxt = GameObject.FindGameObjectWithTag("Win Text").GetComponent<TextMeshPro>();        
+      winnerTxt.enabled = false;  
+      playerTxt = GameObject.FindGameObjectWithTag("Player Text").GetComponent<TextMeshPro>();
+      // Red player starts
+      activePlayer = "Red";
+      WhoseRound(activePlayer);
+      
+    }
 
       /*
       * Winner
       * If a bullet hits another player then do the following:
-      * - Hide Player 2
+      * - Hide Green
       * - Play Explosion
       * - Destroy Bullets
       * - Set and display text
       * - Reset the power meter
       */
-    public void Winner(){
-        // cause player 2 to hide
-        GameObject.FindGameObjectWithTag("Player 2").gameObject.GetComponent<MeshRenderer>().enabled = false;
+    public void Loser(string player){
+      Debug.Log("Which player lost: " + player);
+      winnerTxt.enabled = true;
+      if(player == "Green"){
+        // Set and display text.
+        winnerTxt.SetText("Red wins");
+        // cause Green to hide
+        GameObject.FindGameObjectWithTag("Green").gameObject.GetComponent<MeshRenderer>().enabled = false;
         // cause explosion
-        GameObject.FindGameObjectWithTag("Player 2 Explosion").GetComponent<ParticleSystem>().Play();
+        GameObject.FindGameObjectWithTag("Green Explosion").GetComponent<ParticleSystem>().Play();
+        // ball resets at Green
+      } else if (player == "Red"){
+        // Set and display text.
+        winnerTxt.SetText("Green wins");
+        // cause Green to hide
+        GameObject.FindGameObjectWithTag("Red").gameObject.GetComponent<MeshRenderer>().enabled = false;
+        // cause explosion
+        GameObject.FindGameObjectWithTag("Red Explosion").GetComponent<ParticleSystem>().Play();        
+      }
+        // TEMP - in the future we want to go to some sort of score
+        ResetRound(bullet);
+
         // Make all bullets inactive.
         GameObject[] bullets = GameObject.FindGameObjectsWithTag("Bullet");
         foreach (GameObject bullet in bullets)
         {
           bullet.gameObject.SetActive(false);
-          // Destroy(bullet);
         }
-        // Set and display text.
-        textmeshPro.enabled = true;
-        textmeshPro.SetText("Red wins");
+
         // Rescale the power meter to original size.
         ResetPowerMeter();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-      // int bullet game object
-      bullet = GameObject.FindGameObjectWithTag("Bullet");
-      // Int the win text that displays the winner
-      GameObject winnerText = GameObject.FindGameObjectWithTag("Win Text");
-      textmeshPro = winnerText.GetComponent<TextMeshPro>();        
-      textmeshPro.enabled = false;
-
-      
-    }
 
     void ResetPowerMeter(){
         // Rescale the power meter to original size
@@ -64,6 +85,31 @@ public class gameStates : MonoBehaviour
         powerMeter.GetComponent<Collider>().transform.localScale = new Vector3(1f, 1f, 1f);
     }
 
+
+    /*
+    * Whose Round (is it anyway?)
+    * Depending on whose round change the environments
+    * - Show and re-enable the target 
+    */
+    void WhoseRound(string player){
+        if(player == "Red"){
+          // Text
+          playerTxt.SetText("Red's turn");
+          // Reset bullet position 
+          Vector3 bulletInitialPosition = bullet.GetComponent<firingBullet>().bulletInitialRedPos;
+          bullet.transform.position =  bulletInitialPosition;
+          // Switch player.
+          activePlayer = "Green";
+        } else if (player == "Green"){
+          // Text
+          playerTxt.SetText("Green's turn");
+          // Reset bullet position 
+          Vector3 bulletInitialPosition = bullet.GetComponent<firingBullet>().bulletInitialRedPos;
+          bullet.transform.position =  bulletInitialPosition;
+          // Switch player.
+          activePlayer = "Green";
+        }
+    } 
 
     /*
     * Reset round
@@ -80,10 +126,8 @@ public class gameStates : MonoBehaviour
         target.gameObject.GetComponent<MeshRenderer>().enabled = true;
         // Re-enable target
         target.GetComponent<target>().movingTarget = true;
-        // Reset bullet position 
-        bullet.GetComponent<firingBullet>().shotFired = false;
-        Vector3 bulletInitialPosition = bullet.GetComponent<firingBullet>().bulletInitialPos;
-        bullet.transform.position =  bulletInitialPosition;
+        // Let bullet be shot again
+        bullet.GetComponent<firingBullet>().shotFired = false;        
         // Remove force from bullet
         bullet.transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
         bullet.transform.GetComponent<Rigidbody>().angularVelocity = Vector3.zero; 
@@ -105,6 +149,7 @@ public class gameStates : MonoBehaviour
         || bullet.transform.position.y < offScreenBottom
         ) {
           ResetRound(bullet);
+          WhoseRound(activePlayer);
         }
        
     }

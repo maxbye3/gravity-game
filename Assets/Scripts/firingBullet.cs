@@ -8,13 +8,13 @@ public class firingBullet : MonoBehaviour
   * Firing Bullet
   * Fires the bullet if the power meter has been specified
   */
-    public Vector3 bulletInitialPos; // Export the bullets initial position when game is reset.
+    public Vector3 bulletInitialRedPos = new Vector3(-6.6f, 0.5f, 0); // Export the bullets initial position when game is reset.
+    public Vector3 bulletInitialGreenPos = new Vector3(6.6f, 0.5f, 0); // Export the bullets initial position when game is reset.
     public int powerConstant = 10; // Multiplier that determines how fast the bullet travels (powerConstant * powerChosenByUser).
     public bool shotFired = false; // Determines if the shot has been fired or not.
 
     void Start()
     {
-      bulletInitialPos = transform.position; // Set initial bullet position.
     }
 
     /*
