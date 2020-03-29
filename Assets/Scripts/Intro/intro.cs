@@ -28,12 +28,12 @@ public class intro : MonoBehaviour
       countdownTxt.enabled = true;
       countdownTxt.SetText("3");
       //Start the coroutines we define below named SetText and StartGame.
-      StartCoroutine(StopFireworks(1));
+      StartCoroutine(StopFireworks(0f)); 
       StartCoroutine(SetText(1,"2"));
       StartCoroutine(SetText(2, "1"));
       StartCoroutine(StartGame(3));
-      
       lostPlayer = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().lostPlayer;
+      Debug.Log("lostPlayer: " + lostPlayer);
       GameObject.FindGameObjectWithTag(lostPlayer).gameObject.GetComponent<MeshRenderer>().enabled = true;
       readyToGame = GameObject.FindGameObjectWithTag(lostPlayer).gameObject.transform.position;
       outOfTheScreen = new Vector3(readyToGame.x * 2f, 0, 0);
@@ -42,10 +42,11 @@ public class intro : MonoBehaviour
       
     }
 
-    IEnumerator StopFireworks(int seconds)
+    IEnumerator StopFireworks(float seconds)
     {
       yield return new WaitForSeconds(seconds);
       GameObject.FindGameObjectWithTag("Green Explosion").GetComponent<ParticleSystem>().Stop();
+      GameObject.FindGameObjectWithTag("Red Explosion").GetComponent<ParticleSystem>().Stop();
     }
     IEnumerator DelayMovement(int seconds)
     {

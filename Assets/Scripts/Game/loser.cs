@@ -31,7 +31,7 @@ public class loser : MonoBehaviour
       */
     public void Loser(string player){
       // lets other scripts know whose lost
-      string lostPlayer = player;
+      GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().lostPlayer = player;
 
       // disables player text
       playerTxt.enabled = false;

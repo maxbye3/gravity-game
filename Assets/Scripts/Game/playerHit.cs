@@ -12,7 +12,10 @@ public class playerHit : MonoBehaviour
     void OnCollisionEnter(Collision collision) // Detect collisions between the GameObjects with Colliders attached
     {
         //Check for a match with the specific tag on any GameObject that collides with your GameObject
-        if (collision.gameObject.tag == "Bullet")
+        if (
+          collision.gameObject.tag == "Bullet"
+          && GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().gameState == "game" // have to be playing the game
+        )
         {
           // Calls Winner() in Assets/Scripts/gameStates.cs
           GameObject.FindGameObjectWithTag("GameController").GetComponent<loser>().Loser(gameObject.tag);            
