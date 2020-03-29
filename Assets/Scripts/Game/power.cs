@@ -21,6 +21,15 @@ public class power : MonoBehaviour
     }
 
     /*
+    * Reset Power
+    * Rescale the power meter to original size
+    */
+    public void ResetPowerMeter(){
+      GameObject powerMeter = GameObject.FindGameObjectWithTag("Power Meter");
+      powerMeter.GetComponent<Collider>().transform.localScale = new Vector3(1f, 1f, 1f);
+    }
+
+    /*
     * Set Power
     * Sets the final power value
     */

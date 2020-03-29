@@ -15,7 +15,7 @@ public class playerHit : MonoBehaviour
         if (collision.gameObject.tag == "Bullet")
         {
           // Calls Winner() in Assets/Scripts/gameStates.cs
-          GameObject.FindGameObjectWithTag("MainCamera").GetComponent<gameStates>().Loser(gameObject.tag);            
+          GameObject.FindGameObjectWithTag("GameController").GetComponent<loser>().Loser(gameObject.tag);            
         }
     }
 }
