@@ -12,7 +12,7 @@ public class firingBullet : MonoBehaviour
     public Vector3 bulletInitialGreenPos = new Vector3(6.6f, 0.5f, 0); // Export the bullets initial position when game is reset.
     public int powerConstant = 10; // Multiplier that determines how fast the bullet travels (powerConstant * powerChosenByUser).
     public bool shotFired = false; // Determines if the shot has been fired or not.
-
+    public int timeout = 4; // amount of time bullet flies before resetting player
     void Start()
     {
     }
@@ -22,6 +22,9 @@ public class firingBullet : MonoBehaviour
     * If there's power assigned to the bullet then fire the bullet
     */
     void FireBullet(int powerLevel){
+      // change player after timeout
+      StartCoroutine(GameObject.FindGameObjectWithTag("GameController").gameObject.GetComponent<gameStates>().TurnTimeout(timeout));
+      
       GameObject target = GameObject.FindGameObjectWithTag("Target");
       // Hide target
       target.gameObject.GetComponent<MeshRenderer>().enabled = false;

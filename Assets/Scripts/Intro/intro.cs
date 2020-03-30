@@ -63,7 +63,6 @@ public class intro : MonoBehaviour
           objectToMove.position = Vector3.Lerp(a, b, t); // Move objectToMove closer to b
           yield return new WaitForFixedUpdate();         // Leave the routine and return here in the next frame
       }
-      // objectToMove.position = b;
     }
 
   IEnumerator SetText(int seconds, string text)

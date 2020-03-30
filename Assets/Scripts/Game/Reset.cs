@@ -28,7 +28,8 @@ public class Reset : MonoBehaviour
         target.gameObject.GetComponent<MeshRenderer>().enabled = true;
         // Re-enable target
         target.GetComponent<target>().targetActive = true;
-        // Let bullet be shot again
+        GetComponent<gameStates>().round += 1; 
+        // Let bullet be shot again and stop resetting of game
         bullet.GetComponent<firingBullet>().shotFired = false;        
         // Remove force from bullet
         bullet.transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
