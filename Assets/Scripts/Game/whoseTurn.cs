@@ -1,59 +1,73 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 public class whoseTurn : MonoBehaviour
 {
-    private TextMeshPro playerTxt;
+  private TextMeshPro playerTxt;
+
+  private GameObject bullet; // the bullet
+
+  void Start() {
     
-    private GameObject bullet; // the bullet
+  }
 
-    // Start is called before the first frame update
-    void Start()
+  /*
+   * Show these things
+   * A series of game objects to show while the game is happening
+   */
+  void ShowInGame()
+  {
+    GameObject.FindGameObjectWithTag("Bullet").gameObject.GetComponent<MeshRenderer>().enabled = true;
+    GameObject.FindGameObjectWithTag("Target").gameObject.GetComponent<MeshRenderer>().enabled = true;
+    GameObject.FindGameObjectWithTag("Power Meter").gameObject.GetComponentInChildren<MeshRenderer>().enabled = true;
+    GameObject.FindGameObjectWithTag("Player Text").GetComponent<TextMeshPro>().enabled = true;
+    // hide the winner text
+    GameObject.FindGameObjectWithTag("Win Text").GetComponent<TextMeshPro>().enabled = false;
+  }
+
+  /*
+   * Depending on whose turn it is
+   * Do the following stuff (text change)
+   * Return the ball position of whoever's turn it is  
+   */
+  public Vector3 playerSpecifics()
+  {
+    playerTxt = GameObject.FindGameObjectWithTag("Player Text").GetComponent<TextMeshPro>(); // int player text
+    bullet = GameObject.FindGameObjectWithTag("Bullet"); // bullet
+
+    // get active player
+    string player = GetComponent<gameStates>().activePlayer;
+    if (player == "Red")
     {
-        // Int the player text that displays whose turn it is
-        
-        
-       
+      // Text
+      playerTxt.SetText("Red's turn");
+      // Switch player text
+      GetComponent<gameStates>().activePlayer = "Green";
+      // Return Red's original bullet position 
+      return bullet.GetComponent<firingBullet>().bulletInitialRedPos;
     }
+    // Else it's the green player
+    // Text
+    playerTxt.SetText("Green's turn");
+    // Switch player text
+    GetComponent<gameStates>().activePlayer = "Red";
+    // Return Green's original bullet position 
+    return bullet.GetComponent<firingBullet>().bulletInitialGreenPos;
+  }
 
-    // Update is called once per frame
-    void ShowInGame()
-    {
-      GameObject.FindGameObjectWithTag("Bullet").gameObject.GetComponent<MeshRenderer>().enabled = true;
-      GameObject.FindGameObjectWithTag("Target").gameObject.GetComponent<MeshRenderer>().enabled = true;
-      GameObject.FindGameObjectWithTag("Power Meter").gameObject.GetComponentInChildren<MeshRenderer>().enabled = true;
-      playerTxt.enabled = true;
-      GameObject.FindGameObjectWithTag("Win Text").GetComponent<TextMeshPro>().enabled = false;
-    }
-
-     /*
-    * Whose Round (is it anyway?)
-    * Depending on whose round change the environments
-    * - Show and re-enable the target 
-    */
-    public void IntTurn(string player){
-        bullet = GameObject.FindGameObjectWithTag("Bullet");
-        playerTxt = GameObject.FindGameObjectWithTag("Player Text").GetComponent<TextMeshPro>();
-        // global game state
-        GetComponent<gameStates>().gameState = "game";
-        ShowInGame();
-        if(player == "Red"){
-          // Text
-          playerTxt.SetText("Red's turn");
-          // Reset bullet position 
-          Vector3 bulletInitialPosition = bullet.GetComponent<firingBullet>().bulletInitialRedPos;
-          bullet.transform.position =  bulletInitialPosition;
-          // Switch player.
-          GetComponent<gameStates>().activePlayer = "Green";
-        } else if (player == "Green"){
-          // Text
-          playerTxt.SetText("Green's turn");
-          // Reset bullet position 
-          Vector3 bulletInitialPosition = bullet.GetComponent<firingBullet>().bulletInitialGreenPos;
-          bullet.transform.position =  bulletInitialPosition;
-          // Switch player.
-          GetComponent<gameStates>().activePlayer = "Red";
-        }
-    } 
+  /*
+   * Whose Round (is it anyway?)
+   * Depending on whose round change the environments
+   * - Show and re-enable the target 
+   */
+  public void IntTurn()
+  {    
+    // Change global game state
+    GetComponent<gameStates>().gameState = "game";
+    // Show bunch of stuff to do with game
+    ShowInGame();
+    // Put bullet into position
+    GameObject.FindGameObjectWithTag("Bullet").transform.position = playerSpecifics();
+  }
 }

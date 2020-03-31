@@ -11,11 +11,6 @@ public class target : MonoBehaviour
    private float distance_to_screen;
    private Vector3 pos_move;
    public bool targetActive = true;
-
-  // Use this for initialization
-  void Start () {
-  
-  }
   
   // Update is called once per frame
   void Update () {

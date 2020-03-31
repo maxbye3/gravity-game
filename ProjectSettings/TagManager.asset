@@ -17,6 +17,7 @@ TagManager:
   - Red Explosion
   - Countdown
   - Intro
+  - Old Bullet
   layers:
   - Default
   - TransparentFX

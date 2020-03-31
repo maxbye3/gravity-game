@@ -181,6 +181,7 @@ MonoBehaviour:
   lostPlayer: 
   activePlayer: 
   gameState: 
+  round: 0
 --- !u!114 &43421925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,6 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef04879e00d62482ca91fb509a3d5d6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletInitialPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &43421927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -628,13 +630,14 @@ GameObject:
   - component: {fileID: 401956184}
   - component: {fileID: 401956183}
   - component: {fileID: 401956187}
+  - component: {fileID: 401956188}
   m_Layer: 0
   m_Name: Planet
   m_TagString: Planets
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!135 &401956183
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -703,8 +706,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 401956182}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.4881134, y: -2.1405203, z: 0}
-  m_LocalScale: {x: 2.7546625, y: 2.8234954, z: 1}
+  m_LocalPosition: {x: -3, y: 2.63, z: 0}
+  m_LocalScale: {x: 1.3525393, y: 1.3863362, z: 0.491}
   m_Children: []
   m_Father: {fileID: 43421923}
   m_RootOrder: 0
@@ -725,6 +728,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &401956188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401956182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 064ab7e10aca6433c85780a8ad761b2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &420148934
 GameObject:
   m_ObjectHideFlags: 0
@@ -1705,6 +1720,7 @@ MonoBehaviour:
   bulletInitialGreenPos: {x: 6.6, y: 0.5, z: 0}
   powerConstant: 30
   shotFired: 0
+  timeout: 4
 --- !u!1001 &1783909136
 PrefabInstance:
   m_ObjectHideFlags: 0

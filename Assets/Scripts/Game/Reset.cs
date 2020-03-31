@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-public class Reset : MonoBehaviour
+public class reset : MonoBehaviour
 {
    /*
     * Reset round
@@ -17,44 +17,43 @@ public class Reset : MonoBehaviour
   public float offScreenBottom = -6; // bottom of the game screen 
    private GameObject bullet; // the bullet
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        bullet = GameObject.FindGameObjectWithTag("Bullet");
-    }
     public void ResetRound(){    
-        GameObject target = GameObject.FindGameObjectWithTag("Target");
-        // Show target
-        target.gameObject.GetComponent<MeshRenderer>().enabled = true;
-        // Re-enable target
-        target.GetComponent<target>().targetActive = true;
-        GetComponent<gameStates>().round += 1; 
-        // Let bullet be shot again and stop resetting of game
-        bullet.GetComponent<firingBullet>().shotFired = false;        
-        // Remove force from bullet
-        bullet.transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        bullet.transform.GetComponent<Rigidbody>().angularVelocity = Vector3.zero; 
-        // Rescale the power meter to original size
-        GameObject.FindGameObjectWithTag("Power Meter").GetComponent<power>().ResetPowerMeter();
-        // Set power to 0
-        GameObject.FindGameObjectWithTag("Power Meter").GetComponent<power>().powerLevel = 0;
-        // Change whose round it is (from Green <==> Red)
-        GetComponent<whoseTurn>().IntTurn(GetComponent<gameStates>().activePlayer);
+      GameObject target = GameObject.FindGameObjectWithTag("Target"); // int target
+      // Show target
+      target.gameObject.GetComponent<MeshRenderer>().enabled = true;
+      // Re-enable target
+      target.GetComponent<target>().targetActive = true;      
+      // Rescale the power meter to original size
+      GameObject.FindGameObjectWithTag("Power Meter").GetComponent<power>().ResetPowerMeter();
+      // Set power to 0
+      GameObject.FindGameObjectWithTag("Power Meter").GetComponent<power>().powerLevel = 0;
+      // Let bullet be shot again and stop resetting of game
+      GameObject.FindGameObjectWithTag("Bullet").GetComponent<firingBullet>().shotFired = false;  
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        // If bullet flied out of bounds then reset the round 
-        if(bullet 
-          && 
-           bullet.transform.position.x > offScreenRight
+      bullet = GameObject.FindGameObjectWithTag("Bullet"); // int bullet
+        
+      // If bullet flied out of bounds then reset the round 
+      if(bullet 
+        && bullet.transform.position.x > offScreenRight
         || bullet.transform.position.x < offScreenLeft
         || bullet.transform.position.y > offScreenTop
         || bullet.transform.position.y < offScreenBottom
-        ) {
-          ResetRound();
-        }
+      ) {
+        ResetRound();
+        // Change whose round it is (from Green <==> Red)
+        GetComponent<whoseTurn>().IntTurn();
+      
+        // Remove force from bullet
+        GameObject.FindGameObjectWithTag("Bullet").transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        GameObject.FindGameObjectWithTag("Bullet").transform.GetComponent<Rigidbody>().angularVelocity = Vector3.zero; 
+        
+        // Iterate round number (round over)
+        GetComponent<gameStates>().round += 1;
+      }
        
     }
 
