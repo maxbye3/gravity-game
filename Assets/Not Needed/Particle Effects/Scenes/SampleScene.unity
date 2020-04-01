@@ -130,10 +130,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 43421923}
+  - component: {fileID: 43421927}
   - component: {fileID: 43421924}
   - component: {fileID: 43421925}
   - component: {fileID: 43421926}
-  - component: {fileID: 43421927}
   m_Layer: 0
   m_Name: Main
   m_TagString: GameController
@@ -184,6 +184,7 @@ MonoBehaviour:
   gameState: 
   howDoesGameStart: 
   round: 0
+  timeout: 0
 --- !u!114 &43421925
 MonoBehaviour:
   m_ObjectHideFlags: 0
