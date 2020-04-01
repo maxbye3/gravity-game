@@ -17,7 +17,8 @@ public class reset : MonoBehaviour
   public float offScreenBottom = -6; // bottom of the game screen 
    private GameObject bullet; // the bullet
 
-    public void ResetRound(){    
+    public void ResetRound(){   
+      Debug.Log("YO"); 
       GameObject target = GameObject.FindGameObjectWithTag("Target"); // int target
       // Show target
       target.gameObject.GetComponent<MeshRenderer>().enabled = true;
