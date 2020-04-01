@@ -15,9 +15,11 @@ public class gameStates : MonoBehaviour
   public string gameState; // whose round is it
   public string howDoesGameStart;
   public int round = 0; // how many rounds
+  public int timeout = 0;
 
   void Start()
   { // Start is called before the first frame update
+
     activePlayer = "Red"; // Red starts
     if (howDoesGameStart == "intro")
     {
@@ -51,6 +53,7 @@ public class gameStates : MonoBehaviour
   {
     // The round at the beginning of timeout
     int roundAtTimeOfShot = round;
+
     yield return new WaitForSeconds(seconds);
 
     if (round == roundAtTimeOfShot)
@@ -62,11 +65,13 @@ public class gameStates : MonoBehaviour
       // Clone bullet
       GameObject newBullet = Instantiate(bullet, GetComponent<whoseTurn>().playerSpecifics(), Quaternion.identity);
       // Change bullet tag so old bullet just floats till round end (TO DO: tag should be unique)
-      GameObject.FindGameObjectWithTag("Helper").GetComponent<tagHelper>().AddTag("Old Bullet" + round);
-      bullet.transform.gameObject.tag = "Old Bullet" + round;
+      GameObject.FindGameObjectWithTag("Helper").GetComponent<tagHelper>().AddTag("Old Bullet" + timeout);
+      bullet.transform.gameObject.tag = "Old Bullet" + timeout;
 
       // Iterate round number (round over)
-      GetComponent<gameStates>().round += 1;
+      round += 1;
+      // Iterate round number (round over)
+      timeout += 1;
 
     }
   }

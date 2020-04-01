@@ -9,7 +9,7 @@ public class planet : MonoBehaviour
   /*
     * Planet's gravity
     * Put gravity on bullets
-    *  TO DO: old bullets
+    * Put gravity on bullets 
     */
   void Update()
   {
@@ -17,7 +17,7 @@ public class planet : MonoBehaviour
 
 
     //  Get bullet distance from planet
-    // Debug.Log("bullet distance from planet:" + distance);
+    // Debug.Log("Bullet distance from planet:" + distance);
     // If bullet has been fired
     bullet = GameObject.FindGameObjectWithTag("Active Bullet");
     if (bullet.GetComponent<firingBullet>().shotFired == true)
@@ -37,11 +37,8 @@ public class planet : MonoBehaviour
       // }
     }
 
-              int numberOfOldBullets = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().round;
-        Debug.Log("numberOfOldBullets: " + numberOfOldBullets);
+      int numberOfOldBullets = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().timeout;
       for (int i = 0; i < numberOfOldBullets; i++) {
-             //Stuff
-        Debug.Log("Old Bullet" + i);
         GameObject oldBullet = GameObject.FindGameObjectWithTag("Old Bullet" + i);
         float distance = Vector3.Distance(oldBullet.transform.position, transform.position);
         Vector3 direction = transform.position - oldBullet.transform.position;
