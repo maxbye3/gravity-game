@@ -102,7 +102,7 @@ public class intro : MonoBehaviour
 
     GameObject gameController = GameObject.FindGameObjectWithTag("GameController"); // int global game state
     // Reset game
-    gameController.GetComponent<reset>().ResetRound();
+    gameController.GetComponent<resetGame>().ResetRound();
     // Find whose turn it is
     gameController.GetComponent<whoseTurn>().IntTurn();
     // Remove force from bullet

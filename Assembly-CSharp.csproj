@@ -57,7 +57,7 @@
      <Compile Include="Assets\Scripts\Game\planet.cs" />
      <Compile Include="Assets\Scripts\Game\playerHit.cs" />
      <Compile Include="Assets\Scripts\Game\power.cs" />
-     <Compile Include="Assets\Scripts\Game\reset.cs" />
+     <Compile Include="Assets\Scripts\Game\resetGame.cs" />
      <Compile Include="Assets\Scripts\Game\target.cs" />
      <Compile Include="Assets\Scripts\Game\whoseTurn.cs" />
      <Compile Include="Assets\Scripts\Helper\tagHelper.cs" />

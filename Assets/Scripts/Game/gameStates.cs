@@ -58,7 +58,7 @@ public class gameStates : MonoBehaviour
 
     if (round == roundAtTimeOfShot)
     { // Check if we're in the same round
-      GetComponent<reset>().ResetRound(); // Reset the game
+      GetComponent<resetGame>().ResetRound(); // Reset the game
 
       GameObject bullet = GameObject.FindGameObjectWithTag("Active Bullet"); // int bullet
 
