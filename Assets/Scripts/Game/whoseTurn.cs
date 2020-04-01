@@ -67,7 +67,5 @@ public class whoseTurn : MonoBehaviour
     GetComponent<gameStates>().gameState = "game";
     // Show bunch of stuff to do with game
     ShowInGame();
-    // Put bullet into position
-    GameObject.FindGameObjectWithTag("Bullet").transform.position = playerSpecifics();
   }
 }

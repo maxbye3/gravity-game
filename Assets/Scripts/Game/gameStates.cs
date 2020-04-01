@@ -56,7 +56,9 @@ public class gameStates : MonoBehaviour {
       GameObject newBullet = Instantiate (bullet, GetComponent<whoseTurn> ().playerSpecifics (), Quaternion.identity);
       // Change bullet tag so old bullet just floats till round end (TO DO: tag should be unique)
       bullet.transform.gameObject.tag = "Old Bullet";
+      
       // Remove force from new bullet
+      Debug.Log("Remove force on new bullet!");
       GameObject.FindGameObjectWithTag ("Bullet").transform.GetComponent<Rigidbody> ().velocity = Vector3.zero;
       GameObject.FindGameObjectWithTag ("Bullet").transform.GetComponent<Rigidbody> ().angularVelocity = Vector3.zero;
 

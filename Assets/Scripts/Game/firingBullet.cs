@@ -18,6 +18,14 @@ public class firingBullet : MonoBehaviour {
    * If there's power assigned to the bullet then fire the bullet
    */
   void FireBullet (int powerLevel) {
+
+    // Remove force from bullet
+    GameObject.FindGameObjectWithTag("Bullet").transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
+    GameObject.FindGameObjectWithTag("Bullet").transform.GetComponent<Rigidbody>().angularVelocity = Vector3.zero; 
+    
+    // Set position of bullet
+    GameObject.FindGameObjectWithTag("Bullet").transform.position = GameObject.FindGameObjectWithTag("GameController").GetComponent<whoseTurn>().playerSpecifics();
+    
     /*
      * target & bullet
      */
