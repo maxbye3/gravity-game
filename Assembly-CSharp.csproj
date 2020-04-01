@@ -51,15 +51,16 @@
      <Compile Include="Assets\Not Needed\Particle Effects\Shared\Scripts\ProximityActivate.cs" />
      <Compile Include="Assets\Not Needed\Particle Effects\Shared\Scripts\SimpleCameraController.cs" />
      <Compile Include="Assets\Not Needed\Particle Effects\Shared\Scripts\SimpleCharacterMotor.cs" />
-     <Compile Include="Assets\Scripts\Game\Reset.cs" />
      <Compile Include="Assets\Scripts\Game\firingBullet.cs" />
      <Compile Include="Assets\Scripts\Game\gameStates.cs" />
      <Compile Include="Assets\Scripts\Game\loser.cs" />
      <Compile Include="Assets\Scripts\Game\planet.cs" />
      <Compile Include="Assets\Scripts\Game\playerHit.cs" />
      <Compile Include="Assets\Scripts\Game\power.cs" />
+     <Compile Include="Assets\Scripts\Game\reset.cs" />
      <Compile Include="Assets\Scripts\Game\target.cs" />
      <Compile Include="Assets\Scripts\Game\whoseTurn.cs" />
+     <Compile Include="Assets\Scripts\Helper\tagHelper.cs" />
      <Compile Include="Assets\Scripts\Intro\intro.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />

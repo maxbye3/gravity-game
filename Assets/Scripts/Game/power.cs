@@ -12,7 +12,7 @@ public class power : MonoBehaviour
   private Vector3 scaleChange;
   public int powerLevel = 0; // Power level sent to the bullet
   private int buildingPower = 0; // Power amount while building
-  public int powerMeter = 50; // How quickly t fill the meter
+  public int powerMeter = 50; // How quickly to fill the meter
   public float fillPowerMeter = 0.5f; // How quickly t fill the meter
   private int previousCyclesPower = 0; // Check buildingPower per cycle to confirm it's still building
   void Start() // Start is called before the first frame update    
@@ -40,7 +40,7 @@ public class power : MonoBehaviour
   }
 
   // Update is called once per frame
-  void FixedUpdate()
+  void Update()
   {
     previousCyclesPower = buildingPower; // Check buildingPower per cycle to confirm it's still building
                                          // Build power on click till it reaches powerLimit
@@ -54,13 +54,6 @@ public class power : MonoBehaviour
     }
     // On release of click set power level
     if (Input.GetMouseButtonUp(0) || Input.GetMouseButtonUp(1))
-    {
-      setPower();
-    }
-    // Sometimes the above isn't detected,
-    // So check if build power is the same value in previous FixedUpdate cycle
-    // If it is then the power meter is not building so setPower()
-    if (buildingPower != 0 && (buildingPower == previousCyclesPower))
     {
       setPower();
     }

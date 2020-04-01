@@ -25,7 +25,7 @@ public class target : MonoBehaviour
       pos_move = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, distance_to_screen));
       transform.position = new Vector3(pos_move.x, pos_move.y, pos_move.z);
     }
-    // If user clicks the mouse then don't
+    // If user clicks the mouse then don't follow the mouse pointer
     if (Input.GetMouseButton(1) || Input.GetMouseButton(0))
     {
       targetActive = false;

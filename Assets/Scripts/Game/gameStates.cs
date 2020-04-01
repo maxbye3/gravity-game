@@ -62,7 +62,8 @@ public class gameStates : MonoBehaviour
       // Clone bullet
       GameObject newBullet = Instantiate(bullet, GetComponent<whoseTurn>().playerSpecifics(), Quaternion.identity);
       // Change bullet tag so old bullet just floats till round end (TO DO: tag should be unique)
-      bullet.transform.gameObject.tag = "Old Bullet";
+      GameObject.FindGameObjectWithTag("Helper").GetComponent<tagHelper>().AddTag("Old Bullet" + round);
+      bullet.transform.gameObject.tag = "Old Bullet" + round;
 
       // Iterate round number (round over)
       GetComponent<gameStates>().round += 1;

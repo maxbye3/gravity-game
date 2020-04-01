@@ -13,6 +13,9 @@ public class planet : MonoBehaviour
     */
   void Update()
   {
+
+
+
     //  Get bullet distance from planet
     // Debug.Log("bullet distance from planet:" + distance);
     // If bullet has been fired
@@ -23,6 +26,8 @@ public class planet : MonoBehaviour
       float distance = Vector3.Distance(bullet.transform.position, transform.position);
       Vector3 direction = transform.position - bullet.transform.position;
       bullet.GetComponent<Rigidbody>().AddForce(direction / Mathf.Pow(distance, 1f / 3f));
+      // Old bullets dragged towards planets
+
       // GameObject[] bullets = GameObject.FindGameObjectsWithTag("Old Bullet");
       // foreach (GameObject oldBullet in bullets)
       // {
@@ -31,6 +36,17 @@ public class planet : MonoBehaviour
       //   oldBullet.GetComponent<Rigidbody>().AddForce(direction/Mathf.Pow(distance, 1f / 3f));
       // }
     }
+
+              int numberOfOldBullets = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().round;
+        Debug.Log("numberOfOldBullets: " + numberOfOldBullets);
+      for (int i = 0; i < numberOfOldBullets; i++) {
+             //Stuff
+        Debug.Log("Old Bullet" + i);
+        GameObject oldBullet = GameObject.FindGameObjectWithTag("Old Bullet" + i);
+        float distance = Vector3.Distance(oldBullet.transform.position, transform.position);
+        Vector3 direction = transform.position - oldBullet.transform.position;
+        GameObject.FindGameObjectWithTag("Old Bullet" + i).GetComponent<Rigidbody>().AddForce(direction / Mathf.Pow(distance, 1f / 3f));
+      }
 
   }
 }
