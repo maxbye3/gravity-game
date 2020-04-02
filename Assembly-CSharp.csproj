@@ -62,6 +62,7 @@
      <Compile Include="Assets\Scripts\Game\whoseTurn.cs" />
      <Compile Include="Assets\Scripts\Helper\tagHelper.cs" />
      <Compile Include="Assets\Scripts\Intro\intro.cs" />
+     <Compile Include="Assets\Scripts\UI\editPlanetBehaviour.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
