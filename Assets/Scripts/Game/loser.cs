@@ -59,7 +59,14 @@ public class loser : MonoBehaviour
       GameObject.FindGameObjectWithTag("Red Explosion").GetComponent<ParticleSystem>().Play();
     }
 
-    // Make all bullets inactive.
+    // number of old bullets
+    int numberOfOldBullets = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().timeout;
+    // Destroy all old bullets
+    for (int i = 0; i < numberOfOldBullets; i++)
+    { // for every old bullet
+      GameObject oldBullet = GameObject.FindGameObjectWithTag("Old Bullet" + i);
+      Destroy(oldBullet); // exert a force towards planet
+    }
 
     GameObject.FindGameObjectWithTag("Active Bullet").gameObject.GetComponent<MeshRenderer>().enabled = false;
     GameObject[] bullets = GameObject.FindGameObjectsWithTag("Old Bullet");
