@@ -44,7 +44,11 @@ public class power : MonoBehaviour
   {
     previousCyclesPower = buildingPower; // Check buildingPower per cycle to confirm it's still building
                                          // Build power on click till it reaches powerLimit
-    if (powerLevel == 0 && buildingPower <= powerMeter && (Input.GetMouseButton(1) || Input.GetMouseButton(0)))
+    if (
+      powerLevel == 0 
+      && buildingPower <= powerMeter 
+      && (Input.GetMouseButton(1) || Input.GetMouseButton(0)) // mouse is down
+      && GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().gameState == "game") // we're actually playing the game
     {
       Collider powerMeter = GetComponent<Collider>();
       // Increases the size of the meter

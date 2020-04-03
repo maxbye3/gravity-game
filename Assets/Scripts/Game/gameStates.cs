@@ -46,7 +46,7 @@ public class gameStates : MonoBehaviour
   /*
    * Turn Timeout
    * After so many seconds because let's say
-   * the bullet is orbiting a planet 
+   * the bullet is orbiting a star 
    * Then move the turn on to the other player
    */
   public IEnumerator TurnTimeout(int seconds)

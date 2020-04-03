@@ -4,7 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Planets
   - Target
   - Power Meter
   - Win Text
@@ -19,6 +18,9 @@ TagManager:
   - Old Bullet
   - Active Bullet
   - Helper
+  - Star
+  - Planets
+  - Edit Stars Text
   layers:
   - Default
   - TransparentFX
