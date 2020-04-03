@@ -13,37 +13,35 @@ public class starsPull : MonoBehaviour
     */
   void Update()
   {
-
-
-
-    //  Get bullet distance from star
-    // Debug.Log("Bullet distance from star:" + distance);
     // If bullet has been fired
     bullet = GameObject.FindGameObjectWithTag("Active Bullet");
-    if (bullet.GetComponent<firingBullet>().shotFired == true)
+    if (bullet.GetComponent<firingBullet>().shotFired == true) // if bullet is in the game
     {
-      // Pulling bullet towards star
-      float distance = Vector3.Distance(bullet.transform.position, transform.position);
-      Vector3 direction = transform.position - bullet.transform.position;
-      bullet.GetComponent<Rigidbody>().AddForce(direction / Mathf.Pow(distance, 1f / 3f));
-      // Old bullets dragged towards stars
-
-      // GameObject[] bullets = GameObject.FindGameObjectsWithTag("Old Bullet");
-      // foreach (GameObject oldBullet in bullets)
-      // {
-      //   distance = Vector3.Distance (oldBullet.transform.position, transform.position);
-      //   direction =  transform.position - oldBullet.transform.position;
-      //   oldBullet.GetComponent<Rigidbody>().AddForce(direction/Mathf.Pow(distance, 1f / 3f));
-      // }
+      planetGravity("Active Bullet"); // do some gravity on that sucker
     }
 
+      // number of old bullets
       int numberOfOldBullets = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().timeout;
-      for (int i = 0; i < numberOfOldBullets; i++) {
-        GameObject oldBullet = GameObject.FindGameObjectWithTag("Old Bullet" + i);
-        float distance = Vector3.Distance(oldBullet.transform.position, transform.position);
-        Vector3 direction = transform.position - oldBullet.transform.position;
-        GameObject.FindGameObjectWithTag("Old Bullet" + i).GetComponent<Rigidbody>().AddForce(direction / Mathf.Pow(distance, 1f / 3f));
-      }
 
+      for (int i = 0; i < numberOfOldBullets; i++) { // for every old bullet
+        planetGravity("Old Bullet" + i); // exert a force towards planet
+      }
+  }
+
+/*
+* Planet Gravity
+* Exerts force on items specified by tag towards the planet
+* @param {string} tagname - the tagname of the object to pull towards planet
+*/
+  void planetGravity(string tagname){
+    GameObject nonPlanetObject = GameObject.FindGameObjectWithTag(tagname);
+    if(nonPlanetObject){ // if exists
+      //  Get distance from planet
+      float distance = Vector3.Distance(nonPlanetObject.transform.position, transform.position);
+      //  Get direction from planet
+      Vector3 direction = transform.position - nonPlanetObject.transform.position;
+      // Pulling bullet towards planet
+      GameObject.FindGameObjectWithTag(tagname).GetComponent<Rigidbody>().AddForce(direction / Mathf.Pow(distance, 1f / 3f));
+    }
   }
 }

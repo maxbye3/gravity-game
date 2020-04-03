@@ -14,11 +14,12 @@ public class target : MonoBehaviour
 
   // Update is called once per frame
   void Update()
-  {
+  {    
+      // We are in game state
+    bool isGame = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().gameState == "game";
     // Follow the mouse pointer
     if (
-      targetActive && // target is active
-      GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().gameState == "game" // We are in game state (not intro)
+      targetActive && isGame // target is active
     )
     {
       distance_to_screen = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
@@ -26,7 +27,10 @@ public class target : MonoBehaviour
       transform.position = new Vector3(pos_move.x, pos_move.y, pos_move.z);
     }
     // If user clicks the mouse then don't follow the mouse pointer
-    if (Input.GetMouseButton(1) || Input.GetMouseButton(0))
+    if (
+      (Input.GetMouseButton(1) || Input.GetMouseButton(0))
+      && isGame
+      )
     {
       targetActive = false;
     }

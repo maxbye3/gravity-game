@@ -19,6 +19,8 @@ TagManager:
   - Active Bullet
   - Helper
   - Star
+  - Planets
+  - Edit Stars Text
   layers:
   - Default
   - TransparentFX

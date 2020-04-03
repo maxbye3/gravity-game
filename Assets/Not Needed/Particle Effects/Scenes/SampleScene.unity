@@ -640,7 +640,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &401956183
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1377,13 +1377,14 @@ GameObject:
   - component: {fileID: 774880239}
   - component: {fileID: 774880238}
   - component: {fileID: 774880237}
+  - component: {fileID: 774880242}
   m_Layer: 0
   m_Name: Star
   m_TagString: Star
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &774880236
 Transform:
   m_ObjectHideFlags: 0
@@ -1486,6 +1487,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 774880235}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &774880242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774880235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 722acc933f8f547609e978908299a4a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &908645560
 GameObject:
   m_ObjectHideFlags: 0
@@ -1998,6 +2011,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1163171931}
   - component: {fileID: 1163171932}
+  - component: {fileID: 1163171933}
   m_Layer: 0
   m_Name: Edit Stars Functionality
   m_TagString: Untagged
@@ -2029,6 +2043,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65f49d799d74f40eba8ac4b7e93802f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1163171933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1163171930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 722acc933f8f547609e978908299a4a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1175033733
@@ -2141,9 +2167,9 @@ GameObject:
   - component: {fileID: 1554106682}
   - component: {fileID: 1554106684}
   - component: {fileID: 1554106683}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: Edit Stars Text
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2185,7 +2211,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Edit stars
+  m_text: 'Move stars
 
 '
   m_isRightToLeft: 0
