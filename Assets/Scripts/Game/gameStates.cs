@@ -56,8 +56,11 @@ public class gameStates : MonoBehaviour
 
     yield return new WaitForSeconds(seconds);
 
-    if (round == roundAtTimeOfShot)
-    { // Check if we're in the same round
+    if (
+      round == roundAtTimeOfShot // Check if we're in the same round
+      && GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().gameState == "game" // if playing game
+      )
+    { 
       GetComponent<resetGame>().ResetRound(); // Reset the game
 
       GameObject bullet = GameObject.FindGameObjectWithTag("Active Bullet"); // int bullet

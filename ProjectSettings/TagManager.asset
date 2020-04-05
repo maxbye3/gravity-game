@@ -21,6 +21,11 @@ TagManager:
   - Star
   - Planets
   - Edit Stars Text
+  - Create Stars Text
+  - New Star Name
+  - New Star
+  - New Star Input
+  - New Star Text Colour
   layers:
   - Default
   - TransparentFX
