@@ -12,15 +12,16 @@ public class buttonBehaviour : MonoBehaviour
 
   public void onButtonEnter()
   {
-    GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().gameState = "ui"; // We are in game state (not intro)
+    GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().gameState = "button hover"; // We are in game state (not intro)
   }
   public void onButtonExit()
   {
-    if (GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().gameState != "drag stars")
+    if (GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().gameState == "button hover")
     { // button not clicked
       GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().gameState = "game"; // We are in game state (not intro)
     }
   }
+
 
   public void onButtonClick()
   {
@@ -38,7 +39,7 @@ public class buttonBehaviour : MonoBehaviour
       GameObject.FindGameObjectWithTag("Red").transform.position = new Vector3(4000f,4000f, 4000f);
 
       buttonText.SetText("Back to game");
-      GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().gameState = "drag stars"; // We are dragging planets
+      GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().gameState = "drag stars"; // We are dragging stars
       starEditing = !starEditing;
     }
     else

@@ -26,6 +26,7 @@ TagManager:
   - New Star
   - New Star Input
   - New Star Text Colour
+  - Create Star
   layers:
   - Default
   - TransparentFX

@@ -14,13 +14,13 @@ public class ColorIndicator : MonoBehaviour {
 		GetComponent<Renderer>().sharedMaterial.SetColor ("_Color", color.ToColor());
 		transform.parent.BroadcastMessage("OnColorChange", color, SendMessageOptions.DontRequireReceiver);
     // Set planet color to star
-    GameObject.FindWithTag ("New Star").GetComponent<Renderer>().material.SetColor("_Color", color.ToColor());
+    if(GameObject.FindWithTag ("New Star")){
+      GameObject.FindWithTag ("New Star").GetComponent<Renderer>().material.SetColor("_Color", color.ToColor());
+    }
     // Set planet color to text
-    // GameObject.FindWithTag ("New Star Name").GetComponent<TextMeshPro>().color = new Color32(255, 128, 0, 255);
-
-    GameObject.FindWithTag ("New Star Name").GetComponent<TextMeshPro>().color = Color.HSVToRGB(color.h, color.s, color.b);
-    Debug.Log(color.ToColor());
-    Debug.Log(color);
+    if(GameObject.FindWithTag ("New Star Name")){
+      GameObject.FindWithTag ("New Star Name").GetComponent<TextMeshPro>().color = Color.HSVToRGB(color.h, color.s, color.b);
+    }
 	}
 
 	void SetHue(float hue)

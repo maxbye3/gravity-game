@@ -19,7 +19,7 @@ public class gameStates : MonoBehaviour
 
   void Start()
   { // Start is called before the first frame update
-
+    
     activePlayer = "Red"; // Red starts
     if (howDoesGameStart == "intro")
     {
@@ -31,6 +31,7 @@ public class gameStates : MonoBehaviour
       GameObject.FindGameObjectWithTag("Intro").GetComponent<intro>().StartGame();
       // Global game state
       gameState = "intro";
+      GameObject.FindWithTag ("Create Star");      
     }
     else
     {
