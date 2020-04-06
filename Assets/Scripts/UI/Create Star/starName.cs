@@ -16,9 +16,10 @@ public class starName : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // string inputText = (InputField)GameObject.FindGameObjectWithTag("New Star Name").GetComponent<InputField>().text;
         InputField inp1 = GameObject.FindWithTag ("New Star Input").GetComponent<InputField>() as InputField;
-        // Debug.Log("Text input text:" + inp1.text);
+        // If creating a planet then feel free to name it
+        if(GameObject.FindGameObjectWithTag("Create Star Functionality").GetComponent<starCreation>().sunCreated == true) { 
         GameObject.FindWithTag ("New Star Name").GetComponent<TextMeshPro>().SetText(inp1.text);
+        }
     }
 }
