@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class starCreation : MonoBehaviour
 {
   public GameObject createStarMenu;
   public GameObject createStarButton;
+  public GameObject actuallyCreateStarButton;
   public bool sunCreated;
   // public GameObject createStarButton;
   private GameObject newStar;
@@ -27,14 +29,19 @@ public class starCreation : MonoBehaviour
     GameObject.FindGameObjectWithTag("Edit Stars Text").GetComponent<TextMeshProUGUI>().SetText("Cancel");
     // Hide create button
     createStarButton.SetActive(false);
-    // Change text of Red player's turn to create sun instruction
-    GameObject.FindGameObjectWithTag("Player Text").GetComponent<TextMeshPro>().SetText("1. Fill in above to create sun");
-
+    // We are creating a star
     GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().gameState = "create star"; // We are creating a star
     createStarMenu.SetActive(true);
-    // create a new planet
-    GameObject sun = GameObject.FindGameObjectWithTag("Star"); // int sun
-                                                               // clone and position new sun
+
+    // set star mass
+    GameObject.FindWithTag ("Star mass input").GetComponent<InputField>().text = "5";
+
+    // set star size
+    GameObject.FindWithTag ("Star size input").GetComponent<InputField>().text = "5";
+
+    // create a new star
+    GameObject sun = GameObject.FindGameObjectWithTag("Star"); // int sun                
+    // clone and position new sun
     newStar = Instantiate(sun, new Vector3(5, 0, -4), Quaternion.identity);
     // assign sun with new tag
     GameObject.FindGameObjectWithTag("Helper").GetComponent<tagHelper>().AddTag("New Star");
@@ -46,9 +53,11 @@ public class starCreation : MonoBehaviour
     sunName.transform.gameObject.tag = "New Star Name";
   }
 
-  public void saveStar() {
-      // Star creator mode was just on
-    if(sunCreated == true) { 
+  public void saveStar()
+  {
+    // Star creator mode was just on
+    if (sunCreated == true)
+    {
       // save this new planet
       newStar.transform.gameObject.tag = "Star";
       GameObject.FindGameObjectWithTag("Player Text").GetComponent<TextMeshPro>().SetText("2. Click and drag star to location");
@@ -56,25 +65,55 @@ public class starCreation : MonoBehaviour
     }
   }
 
-  public void destroyStar(){
-      // Star creator mode was just on
-    if(sunCreated == true) { 
+  // If star creator is on and the user has clicked cancel then destory star
+  public void destroyStar()
+  {
+    // Star creator mode was just on
+    if (sunCreated == true)
+    {
       // destroy the new planet
       Destroy(GameObject.FindGameObjectWithTag("New Star"));
       sunCreated = false;
     }
   }
 
-  // Update is called once per frame
+  // What to do when the menu is closed
   public void closeMenu()
   {
+    // hide the menu
     createStarMenu.SetActive(false);
+    // show the button
     createStarButton.SetActive(true);
+    // save the star
     if (sunCreated)
     {
       newStar.transform.position = new Vector3(newStar.transform.position.x, newStar.transform.position.y, 0);
     }
-
-
   }
+  public void nonZero(float val){
+    if(val == 0){
+      actuallyCreateStarButton.GetComponent<Button> ().interactable = false;
+    }
+  }
+
+  // If size or mass is too big then change text and colour of Player Text
+  public void outsideLimits(float val, string Type)
+  {
+    // if input int (val or size) is bigger than 10
+    if (val > 10)
+    {
+      // You cannot create star!
+      actuallyCreateStarButton.GetComponent<Button> ().interactable = false;
+      GameObject.FindGameObjectWithTag("Player Text").GetComponent<TextMeshPro>().SetText("Please choose a " + Type + " less than 10.");
+      GameObject.FindGameObjectWithTag("Player Text").GetComponent<TextMeshPro>().color = new Color32(255, 0, 0, 255);;
+    }
+    else
+    {
+      // Go ahead and create star!
+      actuallyCreateStarButton.GetComponent<Button> ().interactable = true;
+      GameObject.FindGameObjectWithTag("Player Text").GetComponent<TextMeshPro>().SetText("1. Fill in above to create sun");
+      GameObject.FindGameObjectWithTag("Player Text").GetComponent<TextMeshPro>().color = new Color32(255, 255, 255, 255);;
+    }
+  }
+
 }

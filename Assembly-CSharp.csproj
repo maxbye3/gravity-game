@@ -68,6 +68,8 @@
      <Compile Include="Assets\Scripts\HSBColor.cs" />
      <Compile Include="Assets\Scripts\Helper\tagHelper.cs" />
      <Compile Include="Assets\Scripts\Intro\intro.cs" />
+     <Compile Include="Assets\Scripts\UI\Create Star\addMass.cs" />
+     <Compile Include="Assets\Scripts\UI\Create Star\addSize.cs" />
      <Compile Include="Assets\Scripts\UI\Create Star\starCreation.cs" />
      <Compile Include="Assets\Scripts\UI\Create Star\starName.cs" />
      <Compile Include="Assets\Scripts\UI\Edit Stars\buttonBehaviour.cs" />

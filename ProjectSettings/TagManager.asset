@@ -29,6 +29,9 @@ TagManager:
   - Create Star Button
   - Create Star Functionality
   - Edit Star Functionality
+  - Star name input
+  - Star size input
+  - Star mass input
   layers:
   - Default
   - TransparentFX
