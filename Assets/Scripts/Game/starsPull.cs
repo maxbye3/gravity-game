@@ -5,6 +5,7 @@ using UnityEngine;
 public class starsPull : MonoBehaviour
 {
   private GameObject bullet;
+  public float mass;
 
   /*
     * Star's gravity
@@ -41,7 +42,7 @@ public class starsPull : MonoBehaviour
       //  Get direction from planet
       Vector3 direction = transform.position - nonPlanetObject.transform.position;
       // Pulling bullet towards planet
-      GameObject.FindGameObjectWithTag(tagname).GetComponent<Rigidbody>().AddForce(direction / Mathf.Pow(distance, 1f / 3f));
+      GameObject.FindGameObjectWithTag(tagname).GetComponent<Rigidbody>().AddForce(mass * direction / Mathf.Pow(distance, 1f / 3f));
     }
   }
 }

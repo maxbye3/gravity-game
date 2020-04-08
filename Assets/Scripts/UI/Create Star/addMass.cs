@@ -24,12 +24,7 @@ public class addMass : MonoBehaviour
       mass = 10;
     }
     // add mass to planet
+    GameObject.FindGameObjectWithTag("New Star").GetComponent<starsPull>().mass = mass/2;
 
-
-    // change text on planet
-    // string starTxt = GameObject.FindGameObjectWithTag("New Star Name").GetComponent<TextMeshPro>().text;
-    // Debug.Log(starTxt);
-    // GameObject.FindGameObjectWithTag("New Star Name").GetComponent<TextMeshPro>().SetText(starTxt + "(" + mass + ")");
-    // GameObject.FindGameObjectWithTag("New Star Name").GetComponent<TextMeshPro>().SetText("hello");
   }
 }
