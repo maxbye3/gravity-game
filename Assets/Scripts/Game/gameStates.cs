@@ -19,7 +19,7 @@ public class gameStates : MonoBehaviour
 
   void Start()
   { // Start is called before the first frame update
-
+    
     activePlayer = "Red"; // Red starts
     if (howDoesGameStart == "intro")
     {
@@ -31,6 +31,7 @@ public class gameStates : MonoBehaviour
       GameObject.FindGameObjectWithTag("Intro").GetComponent<intro>().StartGame();
       // Global game state
       gameState = "intro";
+      GameObject.FindWithTag ("Create Star");      
     }
     else
     {
@@ -56,8 +57,11 @@ public class gameStates : MonoBehaviour
 
     yield return new WaitForSeconds(seconds);
 
-    if (round == roundAtTimeOfShot)
-    { // Check if we're in the same round
+    if (
+      round == roundAtTimeOfShot // Check if we're in the same round
+      && GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().gameState == "game" // if playing game
+      )
+    { 
       GetComponent<resetGame>().ResetRound(); // Reset the game
 
       GameObject bullet = GameObject.FindGameObjectWithTag("Active Bullet"); // int bullet

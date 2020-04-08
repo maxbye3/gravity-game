@@ -43,7 +43,8 @@ public class power : MonoBehaviour
   void Update()
   {
     previousCyclesPower = buildingPower; // Check buildingPower per cycle to confirm it's still building
-                                         // Build power on click till it reaches powerLimit
+    
+    // Build power on click till it reaches powerLimit
     if (
       powerLevel == 0 
       && buildingPower <= powerMeter 
