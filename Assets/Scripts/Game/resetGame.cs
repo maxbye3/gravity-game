@@ -18,7 +18,8 @@ public class resetGame : MonoBehaviour
 
   public void ResetRound()
   {
-    GameObject target = GameObject.FindGameObjectWithTag("Target"); // int target
+    // Int target
+    GameObject target = GameObject.FindGameObjectWithTag("Target"); 
                                                                     // Show target
     target.gameObject.GetComponent<MeshRenderer>().enabled = true;
     // Re-enable target

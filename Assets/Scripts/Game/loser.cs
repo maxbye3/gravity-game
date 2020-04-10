@@ -32,6 +32,11 @@ public class loser : MonoBehaviour
    */
   public void Loser(string player)
   {
+    Debug.Log(1);
+    // Reset rounds
+    GameObject.FindGameObjectWithTag("Intro").GetComponent<randomGame>().destoryStars();
+    GameObject.FindGameObjectWithTag("Intro").GetComponent<randomGame>().randomizeStars();
+
     GetComponent<gameStates>().round += 1;
     // lets other scripts know whose lost
     GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().lostPlayer = player;

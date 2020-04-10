@@ -38,10 +38,9 @@ public class starCreation : MonoBehaviour
 
     // set star size
     GameObject.FindWithTag ("Star size input").GetComponent<InputField>().text = "5";
-
-    // create a new star
-    GameObject sun = GameObject.FindGameObjectWithTag("Star"); // int sun                
-    // clone and position new sun
+    // int sun   
+    GameObject sun = GameObject.FindGameObjectWithTag("Star");              
+    // clone old star and position new sun
     newStar = Instantiate(sun, new Vector3(5, 0, -4), Quaternion.identity);
     // assign sun with new tag
     GameObject.FindGameObjectWithTag("Helper").GetComponent<tagHelper>().AddTag("New Star");

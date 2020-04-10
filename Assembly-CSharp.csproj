@@ -51,11 +51,6 @@
      <Compile Include="Assets\Not Needed\Particle Effects\Shared\Scripts\ProximityActivate.cs" />
      <Compile Include="Assets\Not Needed\Particle Effects\Shared\Scripts\SimpleCameraController.cs" />
      <Compile Include="Assets\Not Needed\Particle Effects\Shared\Scripts\SimpleCharacterMotor.cs" />
-     <Compile Include="Assets\Scripts\ColorHuePicker.cs" />
-     <Compile Include="Assets\Scripts\ColorIndicator.cs" />
-     <Compile Include="Assets\Scripts\ColorSaturationBrightnessPicker.cs" />
-     <Compile Include="Assets\Scripts\Draggable.cs" />
-     <Compile Include="Assets\Scripts\ExampleColorReceiver.cs" />
      <Compile Include="Assets\Scripts\Game\firingBullet.cs" />
      <Compile Include="Assets\Scripts\Game\gameStates.cs" />
      <Compile Include="Assets\Scripts\Game\loser.cs" />
@@ -65,9 +60,15 @@
      <Compile Include="Assets\Scripts\Game\starsPull.cs" />
      <Compile Include="Assets\Scripts\Game\target.cs" />
      <Compile Include="Assets\Scripts\Game\whoseTurn.cs" />
-     <Compile Include="Assets\Scripts\HSBColor.cs" />
      <Compile Include="Assets\Scripts\Helper\tagHelper.cs" />
      <Compile Include="Assets\Scripts\Intro\intro.cs" />
+     <Compile Include="Assets\Scripts\Intro\randomGame.cs" />
+     <Compile Include="Assets\Scripts\UI\Colour Picker\ColorHuePicker.cs" />
+     <Compile Include="Assets\Scripts\UI\Colour Picker\ColorIndicator.cs" />
+     <Compile Include="Assets\Scripts\UI\Colour Picker\ColorSaturationBrightnessPicker.cs" />
+     <Compile Include="Assets\Scripts\UI\Colour Picker\Draggable.cs" />
+     <Compile Include="Assets\Scripts\UI\Colour Picker\ExampleColorReceiver.cs" />
+     <Compile Include="Assets\Scripts\UI\Colour Picker\HSBColor.cs" />
      <Compile Include="Assets\Scripts\UI\Create Star\addMass.cs" />
      <Compile Include="Assets\Scripts\UI\Create Star\addSize.cs" />
      <Compile Include="Assets\Scripts\UI\Create Star\starCreation.cs" />
@@ -92,6 +93,7 @@
      <None Include="Assets\Shaders\ColorSaturationBrightness.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+     <None Include="Assets\starNames.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
      <None Include="Assets\Not Needed\Particle Effects\EffectExamples\Misc Effects\Shaders\FireFly.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
