@@ -32,6 +32,7 @@ TagManager:
   - Star name input
   - Star size input
   - Star mass input
+  - Star text
   layers:
   - Default
   - TransparentFX

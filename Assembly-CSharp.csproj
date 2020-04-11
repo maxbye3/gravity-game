@@ -62,7 +62,7 @@
      <Compile Include="Assets\Scripts\Game\whoseTurn.cs" />
      <Compile Include="Assets\Scripts\Helper\tagHelper.cs" />
      <Compile Include="Assets\Scripts\Intro\intro.cs" />
-     <Compile Include="Assets\Scripts\Intro\randomGame.cs" />
+     <Compile Include="Assets\Scripts\Intro\levelGenerator.cs" />
      <Compile Include="Assets\Scripts\UI\Colour Picker\ColorHuePicker.cs" />
      <Compile Include="Assets\Scripts\UI\Colour Picker\ColorIndicator.cs" />
      <Compile Include="Assets\Scripts\UI\Colour Picker\ColorSaturationBrightnessPicker.cs" />
