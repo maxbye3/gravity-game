@@ -43,7 +43,7 @@ public class whoseTurn : MonoBehaviour
       // Text
       playerTxt.SetText("Red's turn");
       // Switch player text
-      GetComponent<gameStates>().activePlayer = "Green";
+      // GetComponent<gameStates>().activePlayer = "Green"; // temp don't let it switch
       // Return Red's original bullet position 
       return bullet.GetComponent<firingBullet>().bulletInitialRedPos;
     }

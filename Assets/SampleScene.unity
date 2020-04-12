@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 43421925}
   - component: {fileID: 43421926}
   - component: {fileID: 43421927}
+  - component: {fileID: 43421928}
   m_Layer: 0
   m_Name: Main
   m_TagString: GameController
@@ -225,6 +226,18 @@ MonoBehaviour:
   offScreenLeft: -10
   offScreenTop: 6
   offScreenBottom: -6
+--- !u!114 &43421928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43421922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e40862b72933c4edd90709cdcc66a7be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &67087754
 GameObject:
   m_ObjectHideFlags: 0
@@ -784,7 +797,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3, y: 10.29}
+  m_AnchoredPosition: {x: -2.18, y: -1.79}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!54 &401956187
@@ -3479,7 +3492,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1175033734
 Transform:
   m_ObjectHideFlags: 0
@@ -4347,7 +4360,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1570129515
 Transform:
   m_ObjectHideFlags: 0
@@ -4628,6 +4641,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d7298a0dff8c41ce8d9243169a2caa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  newStar: {fileID: 0}
 --- !u!1 &1679251693
 GameObject:
   m_ObjectHideFlags: 0
@@ -4756,6 +4770,7 @@ MonoBehaviour:
   powerConstant: 10
   shotFired: 0
   timeout: 4
+  bulletForce: {x: 0, y: 0, z: 0}
 --- !u!1 &1753199773
 GameObject:
   m_ObjectHideFlags: 0

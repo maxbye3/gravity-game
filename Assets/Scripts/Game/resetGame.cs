@@ -18,6 +18,9 @@ public class resetGame : MonoBehaviour
 
   public void ResetRound()
   {
+    // Record the shots.
+     GameObject.FindGameObjectWithTag("GameController").GetComponent<lastShots>().recordShot();
+     
     // Int target
     GameObject target = GameObject.FindGameObjectWithTag("Target"); 
                                                                     // Show target

@@ -32,9 +32,16 @@ public class loser : MonoBehaviour
    */
   public void Loser(string player)
   {
+    // Record round 
+    GameObject.FindGameObjectWithTag("GameController").GetComponent<lastShots>().recordShot();
+    
+    //  launch all bullets
+    GameObject.FindGameObjectWithTag("Active Bullet").GetComponent<firingBullet>().AllBullets();
+    
     // Reset rounds
     GameObject.FindGameObjectWithTag("Intro").GetComponent<levelGenerator>().destoryStars();
     GameObject.FindGameObjectWithTag("Intro").GetComponent<levelGenerator>().generateLevel();
+    
 
     GetComponent<gameStates>().round += 1;
     // lets other scripts know whose lost

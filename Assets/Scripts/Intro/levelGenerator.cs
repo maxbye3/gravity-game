@@ -10,30 +10,33 @@ public class levelGenerator : MonoBehaviour
   private bool isRotating;
   void Start()
   {
-    // First position
+    // First layout that can be generated for round
     float[] x1 = new float[3] { -4, 0, 4 };
     float[] y1 = new float[3] { -3, 0.5f, 3 };
-    // Second position
+    // Second layout that can be generated for round
     float[] x2 = new float[3] { 4, 0, -4 };
     float[] y2 = new float[3] { 3, 0.5f, -3 };
-    // Third position
+    // Third layout that can be generated for round
     float[] x3 = new float[3] { 3, 0, -3 };
     float[] y3 = new float[3] { 0.5f, 3f, 0.5f };
-    // Fourth position
+    // Fourth layout that can be generated for round
     float[] x4 = new float[3] { 3, 0, -3 };
     float[] y4 = new float[3] { 0.5f, -3f, 0.5f };
-    // Fifth position
+    // Fifth layout that can be generated for round
     float[] x5 = new float[4] { 3, 1, -1, -3 };
     float[] y5 = new float[4] { 0.5f, 2, -2, 0.5f };
-    // Sixth position 
+    // Sixth layou t that can be generated for round 
     float[] x6 = new float[3] { 3, 0, -3 };
     float[] y6 = new float[3] { 0.5f, 0.5f, 0.5f };
-    // Seventh position 
+    // Seventh layout that can be generated for round 
     float[] x7 = new float[5] { 0, 3, 1, -1, -3 };
     float[] y7 = new float[5] { 3, 0.5f, 2, -2, 0.5f };
-    // Eight position 
+    // Eight layout that can be generated for round 
     float[] x8 = new float[6] { 1.5f, -1f, 0, 0, 1.5f, -1.5f };
     float[] y8 = new float[6] { 1f, -1f, 3f, -3f, -1f, 1f };
+    // Test Layout
+    float[] x9 = new float[1] { 0 };
+    float[] y9 = new float[1] { 0 };
 
     coordinates = new float[][][] { 
       new float[][] { x1, y1 }, 
@@ -44,6 +47,7 @@ public class levelGenerator : MonoBehaviour
       new float[][] { x6, y6 },
       new float[][] { x7, y7 },
       new float[][] { x8, y8 },
+      new float[][] { x9, y9 },
     }; 
 
     // randomizeStars();
@@ -71,7 +75,7 @@ public class levelGenerator : MonoBehaviour
   public void FixedUpdate() {
     // 50% chance stars will rotate
     if(isRotating){ 
-      rotateStars();
+      // rotateStars();
     }
 
   }
@@ -105,6 +109,7 @@ public class levelGenerator : MonoBehaviour
     // for (var i = 0; i <= planetNumber; i++)
 
     int range = Random.Range(0, 8);
+    range = 8; // temp
     for (var i = 0; i < coordinates[range][0].Length; i++)
     {
       // Randomize positions
@@ -126,6 +131,7 @@ public class levelGenerator : MonoBehaviour
 
       // Set mass between 5 and 3
       int mass = Random.Range(1, 6);
+      mass = 1; // temp
       newStar.GetComponent<starsPull>().mass = mass / 2;
 
       // Set planet color to star

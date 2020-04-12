@@ -13,6 +13,25 @@ public class firingBullet : MonoBehaviour
   public int powerConstant = 10; // Multiplier that determines how fast the bullet travels (powerConstant * powerChosenByUser).
   public bool shotFired = false; // Determines if the shot has been fired or not.
   public int timeout = 4; // amount of time bullet flies before resetting player
+  public Vector3 bulletForce;
+
+
+  public void AllBullets()
+  {
+    // Debug.Log("shotRecords: " + shotRecords);
+    // FIRST SHOT
+
+    // bulletForce = (vectorToTarget * powerLevel * powerConstant) / distanceToTarget;
+    StartCoroutine(helloWorld(7));
+  }
+
+  IEnumerator helloWorld(float seconds)
+  {
+    yield return new WaitForSeconds(seconds);
+    Vector3 shotDetails = GameObject.FindGameObjectWithTag("GameController").GetComponent<lastShots>().shotsRecord();
+    Debug.Log("bulletForce2: " + shotDetails);
+    GameObject.FindGameObjectWithTag("Active Bullet").GetComponent<Rigidbody>().AddForce(new Vector3(shotDetails[0], shotDetails[1], 0));
+  }
 
   /*
    * Fire Bullet
@@ -32,9 +51,12 @@ public class firingBullet : MonoBehaviour
     Vector2 vectorToTarget = target.transform.position - bullet.transform.position;
     // Calculate distance from ship to target so shot power is uniform.
     float distanceToTarget = Vector3.Distance(target.transform.position, bullet.transform.position);
+
     // Add force to active bullet 
-    GameObject.FindGameObjectWithTag("Active Bullet").GetComponent<Rigidbody>().AddForce((vectorToTarget * powerLevel * powerConstant) / distanceToTarget);
-    // target and bullet
+    bulletForce = new Vector3(359.2f, 87.8f, 0.0f);
+    // bulletForce = (vectorToTarget * powerLevel * powerConstant) / distanceToTarget;
+    Debug.Log("bulletForce1: " + bulletForce);
+    GameObject.FindGameObjectWithTag("Active Bullet").GetComponent<Rigidbody>().AddForce(bulletForce);
 
     // Reset power level
     powerLevel = 0;
