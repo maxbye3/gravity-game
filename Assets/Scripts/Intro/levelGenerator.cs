@@ -10,6 +10,9 @@ public class levelGenerator : MonoBehaviour
   private bool isRotating;
   void Start()
   {
+    /*
+    * Star layouts
+    */
     // First layout that can be generated for round
     float[] x1 = new float[3] { -4, 0, 4 };
     float[] y1 = new float[3] { -3, 0.5f, 3 };
@@ -37,45 +40,52 @@ public class levelGenerator : MonoBehaviour
     // Test Layout
     float[] x9 = new float[1] { 0 };
     float[] y9 = new float[1] { 0 };
+    // Test 2 Layout
+    float[] x10 = new float[0] { };
+    float[] y10 = new float[0] { };
 
-    coordinates = new float[][][] { 
-      new float[][] { x1, y1 }, 
+    coordinates = new float[][][] {
+      new float[][] { x1, y1 },
       new float[][] { x2, y2 },
-      new float[][] { x3, y3 }, 
+      new float[][] { x3, y3 },
       new float[][] { x4, y4 },
       new float[][] { x5, y5 },
       new float[][] { x6, y6 },
       new float[][] { x7, y7 },
       new float[][] { x8, y8 },
       new float[][] { x9, y9 },
-    }; 
+      new float[][] { x10, y10 },
+    };
 
     // randomizeStars();
     generateLevel();
 
-  } 
-  
-
-  public Vector3 RotatePointAroundPivot(Vector3 point, Vector3 pivot, Quaternion angles) {
-    return angles * (point - pivot) + pivot;
   }
 
-  void rotateStars(){
-     var stars = GameObject.FindGameObjectsWithTag("New Star");
+
+  public Vector3 RotatePointAroundPivot(Vector3 point, Vector3 pivot, Quaternion angles)
+  {
+    return angles * (point - pivot) + pivot;
+  }
+  void rotateStars()
+  {
+    var stars = GameObject.FindGameObjectsWithTag("New Star");
     var starText = GameObject.FindGameObjectsWithTag("New Star Text");
     for (var i = 0; i < stars.Length; i++)
     {
-       stars[i].transform.RotateAround(new Vector3(0, 0, 0), new Vector3(0, 0, 5), 1); 
-       var starPos = stars[i].transform.position; 
-       starText[i].transform.position = new Vector3(starPos.x, starPos.y, -1);
+      stars[i].transform.RotateAround(new Vector3(0, 0, 0), new Vector3(0, 0, 5), 1);
+      var starPos = stars[i].transform.position;
+      starText[i].transform.position = new Vector3(starPos.x, starPos.y, -1);
 
     }
   }
 
-  public void FixedUpdate() {
+  public void FixedUpdate()
+  {
     // 50% chance stars will rotate
-    if(isRotating){ 
-      // rotateStars();
+    if (isRotating)
+    {
+      rotateStars();
     }
 
   }
@@ -91,15 +101,30 @@ public class levelGenerator : MonoBehaviour
     return Instantiate(sun, new Vector3(coordinates[range][0][val], coordinates[range][1][val], 0), Quaternion.identity);
   }
 
+
+  public void CreateNewLevel()
+  {
+    // Intro state
+    GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().gameState = "intro";          
+    // Get rid of replay text
+    GameObject.FindGameObjectWithTag("Player Text").GetComponent<TextMeshPro>().SetText("");
+    // Start the game
+    GameObject.FindGameObjectWithTag("Intro").GetComponent<intro>().StartCountdown();
+    // Destroy stars
+    destoryStars();
+    // Generate new level
+    generateLevel();
+  }
+
   /*
   * Generate randomly one of the 10 pre-set levels 
   */
   public void generateLevel()
   {
     // 50% chance stars will rotates
-     if (Random.value >= 0.5)
+    if (Random.value >= 0.5)
     {
-        isRotating = true;
+      isRotating = true;
     }
 
     // IF RANDOM: How many stars between 1 and 3
@@ -108,8 +133,9 @@ public class levelGenerator : MonoBehaviour
     // IF RANDOM: Create between 1 and 3  stars 
     // for (var i = 0; i <= planetNumber; i++)
 
+    // Select layouts 1 to 9
     int range = Random.Range(0, 8);
-    range = 8; // temp
+    // range = 9; // UNCOMMENT FOR TESTING ENVIROMENT (NO STARS)
     for (var i = 0; i < coordinates[range][0].Length; i++)
     {
       // Randomize positions
@@ -131,7 +157,6 @@ public class levelGenerator : MonoBehaviour
 
       // Set mass between 5 and 3
       int mass = Random.Range(1, 6);
-      mass = 1; // temp
       newStar.GetComponent<starsPull>().mass = mass / 2;
 
       // Set planet color to star
@@ -167,11 +192,11 @@ public class levelGenerator : MonoBehaviour
       );
     }
   }
-      
-    /*
-    * DESTROY OLD STARS
-    */
-    public void destoryStars()
+
+  /*
+  * DESTROY OLD STARS
+  */
+  public void destoryStars()
   {
     // Destroy star and text with new star tag
     var stars = GameObject.FindGameObjectsWithTag("New Star");

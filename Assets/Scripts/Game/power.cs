@@ -15,10 +15,6 @@ public class power : MonoBehaviour
   public int powerMeter = 50; // How quickly to fill the meter
   public float fillPowerMeter = 0.5f; // How quickly t fill the meter
   private int previousCyclesPower = 0; // Check buildingPower per cycle to confirm it's still building
-  void Start() // Start is called before the first frame update    
-  {
-
-  }
 
   /*
   * Reset Power
@@ -43,11 +39,11 @@ public class power : MonoBehaviour
   void Update()
   {
     previousCyclesPower = buildingPower; // Check buildingPower per cycle to confirm it's still building
-    
+
     // Build power on click till it reaches powerLimit
     if (
-      powerLevel == 0 
-      && buildingPower <= powerMeter 
+      powerLevel == 0
+      && buildingPower <= powerMeter
       && (Input.GetMouseButton(1) || Input.GetMouseButton(0)) // mouse is down
       && GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().gameState == "game") // we're actually playing the game
     {
