@@ -13,6 +13,7 @@ public class firingBullet : MonoBehaviour
   public int powerConstant = 10; // Multiplier that determines how fast the bullet travels (powerConstant * powerChosenByUser).
   public bool shotFired = false; // Determines if the shot has been fired or not.
   public int timeout = 4; // amount of time bullet flies before resetting player
+  public Vector3 bulletForce;
 
   /*
    * Fire Bullet
@@ -22,7 +23,7 @@ public class firingBullet : MonoBehaviour
   {
 
     /*
-     * target & bullet
+     * Target & bullet
      */
     GameObject target = GameObject.FindGameObjectWithTag("Target"); // int target
     GameObject bullet = GameObject.FindGameObjectWithTag("Active Bullet"); // int bullet
@@ -32,9 +33,10 @@ public class firingBullet : MonoBehaviour
     Vector2 vectorToTarget = target.transform.position - bullet.transform.position;
     // Calculate distance from ship to target so shot power is uniform.
     float distanceToTarget = Vector3.Distance(target.transform.position, bullet.transform.position);
+
     // Add force to active bullet 
-    GameObject.FindGameObjectWithTag("Active Bullet").GetComponent<Rigidbody>().AddForce((vectorToTarget * powerLevel * powerConstant) / distanceToTarget);
-    // target and bullet
+    bulletForce = (vectorToTarget * powerLevel * powerConstant) / distanceToTarget;
+    GameObject.FindGameObjectWithTag("Active Bullet").GetComponent<Rigidbody>().AddForce(bulletForce);
 
     // Reset power level
     powerLevel = 0;
@@ -42,6 +44,15 @@ public class firingBullet : MonoBehaviour
     shotFired = true;
     // Start timeout counter and change player if bullets faffing about
     StartCoroutine(GameObject.FindGameObjectWithTag("GameController").gameObject.GetComponent<gameStates>().TurnTimeout(timeout));
+
+    // TEMP: Everytime shot is fired then reset the bullet data count
+    GameObject.FindGameObjectWithTag("GameController").GetComponent<replay>().bulletRecord.Clear();
+
+    // Make bullet harmful
+    GameObject.FindGameObjectWithTag("Active Bullet").gameObject.GetComponent<SphereCollider>().enabled = true;
+    // Show bullet
+    GameObject.FindGameObjectWithTag("Active Bullet").gameObject.GetComponent<MeshRenderer>().enabled = true;
+
   }
 
   void Update() // Update is called once per frame.
@@ -59,5 +70,6 @@ public class firingBullet : MonoBehaviour
     {
       FireBullet(powerLevel); // Fire!
     }
+
   }
 }

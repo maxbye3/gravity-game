@@ -6,8 +6,6 @@ TagManager:
   tags:
   - Target
   - Power Meter
-  - Win Text
-  - Win Text Canvas
   - Player Text
   - Green Explosion
   - Green
@@ -33,6 +31,9 @@ TagManager:
   - Star size input
   - Star mass input
   - Star text
+  - Win Text
+  - Green Lost Text
+  - Red Lost Text
   layers:
   - Default
   - TransparentFX

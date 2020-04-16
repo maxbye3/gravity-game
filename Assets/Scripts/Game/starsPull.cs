@@ -16,27 +16,33 @@ public class starsPull : MonoBehaviour
   {
     // If bullet has been fired
     bullet = GameObject.FindGameObjectWithTag("Active Bullet");
-    if (bullet.GetComponent<firingBullet>().shotFired == true) // if bullet is in the game
+    if (
+        bullet.GetComponent<firingBullet>().shotFired == true // if bullet is in the game
+        && GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().gameState == "game" // game is being played
+      )
     {
       planetGravity("Active Bullet"); // do some gravity on that sucker
     }
 
-      // number of old bullets
-      int numberOfOldBullets = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().timeout;
+    // number of old bullets
+    int numberOfOldBullets = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().timeout;
 
-      for (int i = 0; i < numberOfOldBullets; i++) { // for every old bullet
-        planetGravity("Old Bullet" + i); // exert a force towards planet
-      }
+    for (int i = 0; i < numberOfOldBullets; i++)
+    { // for every old bullet
+      planetGravity("Old Bullet" + i); // exert a force towards planet
+    }
   }
 
-/*
-* Planet Gravity
-* Exerts force on items specified by tag towards the planet
-* @param {string} tagname - the tagname of the object to pull towards planet
-*/
-  void planetGravity(string tagname){
+  /*
+  * Planet Gravity
+  * Exerts force on items specified by tag towards the planet
+  * @param {string} tagname - the tagname of the object to pull towards planet
+  */
+  void planetGravity(string tagname)
+  {
     GameObject nonPlanetObject = GameObject.FindGameObjectWithTag(tagname);
-    if(nonPlanetObject){ // if exists
+    if (nonPlanetObject)
+    { // if exists
       //  Get distance from planet
       float distance = Vector3.Distance(nonPlanetObject.transform.position, transform.position);
       //  Get direction from planet

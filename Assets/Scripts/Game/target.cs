@@ -14,8 +14,8 @@ public class target : MonoBehaviour
 
   // Update is called once per frame
   void Update()
-  {    
-      // We are in game state
+  {
+    // We are in game state
     bool isGame = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().gameState == "game";
     // Follow the mouse pointer
     if (

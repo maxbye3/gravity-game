@@ -19,7 +19,7 @@ public class gameStates : MonoBehaviour
 
   void Start()
   { // Start is called before the first frame update
-    
+
     activePlayer = "Red"; // Red starts
     if (howDoesGameStart == "intro")
     {
@@ -28,17 +28,17 @@ public class gameStates : MonoBehaviour
        */
       lostPlayer = "Green"; // Green enters arena (disabled)
       // Plays intro first
-      GameObject.FindGameObjectWithTag("Intro").GetComponent<intro>().StartGame();
+      GameObject.FindGameObjectWithTag("Intro").GetComponent<intro>().StartCountdown();
       // Global game state
       gameState = "intro";
-      GameObject.FindWithTag ("Create Star");      
+      GameObject.FindWithTag("Create Star");
     }
     else
     {
       /*
        * Otherwise if you want to start the game immediately (uncomment and comment line 24)
        */
-      GetComponent<whoseTurn>().IntTurn();
+      GetComponent<startGame>().StartGame();
       gameState = "game";
     }
 
@@ -61,16 +61,19 @@ public class gameStates : MonoBehaviour
       round == roundAtTimeOfShot // Check if we're in the same round
       && GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().gameState == "game" // if playing game
       )
-    { 
-      GetComponent<resetGame>().ResetRound(); // Reset the game
+    {
+      GetComponent<nextTurn>().NextTurn(); // Reset the game
 
       GameObject bullet = GameObject.FindGameObjectWithTag("Active Bullet"); // int bullet
 
       // Clone bullet
-      GameObject newBullet = Instantiate(bullet, GetComponent<whoseTurn>().playerSpecifics(), Quaternion.identity);
-      // Change bullet tag so old bullet just floats till round end (TO DO: tag should be unique)
+      GameObject newBullet = Instantiate(bullet, GetComponent<startGame>().playerSpecifics(), Quaternion.identity);
+
+      // Change bullet tag so old bullet just floats till round end
       GameObject.FindGameObjectWithTag("Helper").GetComponent<tagHelper>().AddTag("Old Bullet" + timeout);
       bullet.transform.gameObject.tag = "Old Bullet" + timeout;
+      // Show old bullet
+      bullet.gameObject.GetComponent<MeshRenderer>().enabled = true;
 
       // Iterate round number (round over)
       round += 1;

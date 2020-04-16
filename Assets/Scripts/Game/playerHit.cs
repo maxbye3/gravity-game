@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class playerHit : MonoBehaviour
 {
@@ -13,13 +14,11 @@ public class playerHit : MonoBehaviour
   {
     if (GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().gameState == "game") // have to be playing the game      
     {
-      // Calls Winner() in Assets/Scripts/gameStates.cs
+      // Lost player explosion
+      GameObject.FindGameObjectWithTag("Red").GetComponent<fireworks>().StartFireworks(gameObject.tag);
+      // Declares a loser
       GameObject.FindGameObjectWithTag("GameController").GetComponent<loser>().Loser(gameObject.tag);
     }
-    //Check for a match with the specific tag on any GameObject that collides with your GameObject
-    // int numberOfOldBullets = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().timeout;
-    // for (int i = 0; i < numberOfOldBullets; i++) {
-      // collision.gameObject.tag == "Old Bullet" + i
-    // }
   }
+
 }
