@@ -135,7 +135,7 @@ public class levelGenerator : MonoBehaviour
 
     // Select layouts 1 to 9
     int range = Random.Range(0, 8);
-    // range = 9; // UNCOMMENT FOR TESTING ENVIROMENT (NO STARS)
+    range = 9; // UNCOMMENT FOR TESTING ENVIRONMENT (NO STARS)
     for (var i = 0; i < coordinates[range][0].Length; i++)
     {
       // Randomize positions
