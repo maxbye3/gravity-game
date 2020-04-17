@@ -131,7 +131,7 @@ public class levelGenerator : MonoBehaviour
 
     // record the number of stars
     numberOfStars = coordinates[range][0].Length;
-
+    
     for (var i = 0; i < numberOfStars; i++)
     {
       /* 
