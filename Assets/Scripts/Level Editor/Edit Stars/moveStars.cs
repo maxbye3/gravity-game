@@ -8,11 +8,6 @@ public class moveStars : MonoBehaviour
   private Vector3 pos_move;
   private bool starSelected;
   private GameObject star;
-  // Start is called before the first frame update
-  void Start()
-  {
-
-  }
 
   // Update is called once per frame
   void LateUpdate()

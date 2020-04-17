@@ -83,7 +83,7 @@ public class buttonBehaviour : MonoBehaviour
       // Green re-enters
       GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().lostPlayer = "Green"; // Green enters arena (disabled)
       // Start inro animation
-      GameObject.FindGameObjectWithTag("Intro").GetComponent<intro>().StartCountdown();
+      GameObject.FindGameObjectWithTag("Intro").GetComponent<countdown>().StartCountdown();
       
       // Destroy the new planet
       GameObject.FindGameObjectWithTag("Create Star Functionality").GetComponent<starCreation>().destroyStar();
