@@ -28,7 +28,7 @@ public class gameStates : MonoBehaviour
        */
       lostPlayer = "Green"; // Green enters arena (disabled)
       // Plays intro first
-      GameObject.FindGameObjectWithTag("Intro").GetComponent<intro>().StartCountdown();
+      GameObject.FindGameObjectWithTag("Intro").GetComponent<countdown>().StartCountdown();
       // Global game state
       gameState = "intro";
       GameObject.FindWithTag("Create Star");
@@ -56,6 +56,12 @@ public class gameStates : MonoBehaviour
     int roundAtTimeOfShot = round;
 
     yield return new WaitForSeconds(seconds);
+          /* 
+      * Bullet tracking
+      * Create the correct number of lists to track bullets
+      */
+      GameObject.FindGameObjectWithTag("GameController").GetComponent<replay>().bulletMovements.Add(new List<Vector3>());
+      
 
     if (
       round == roundAtTimeOfShot // Check if we're in the same round

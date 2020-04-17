@@ -46,7 +46,7 @@ public class firingBullet : MonoBehaviour
     StartCoroutine(GameObject.FindGameObjectWithTag("GameController").gameObject.GetComponent<gameStates>().TurnTimeout(timeout));
 
     // TEMP: Everytime shot is fired then reset the bullet data count
-    GameObject.FindGameObjectWithTag("GameController").GetComponent<replay>().bulletRecord.Clear();
+    GameObject.FindGameObjectWithTag("GameController").GetComponent<replay>().activeBulletMovement.Clear();
 
     // Make bullet harmful
     GameObject.FindGameObjectWithTag("Active Bullet").gameObject.GetComponent<SphereCollider>().enabled = true;

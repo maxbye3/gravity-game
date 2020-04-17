@@ -33,7 +33,7 @@ public class loser : MonoBehaviour
   {
     // Show bullet (if hidden)
     GameObject.FindGameObjectWithTag("Active Bullet").gameObject.GetComponent<MeshRenderer>().enabled = true;
-
+ 
     // iterate round number
     GetComponent<gameStates>().round += 1;
 

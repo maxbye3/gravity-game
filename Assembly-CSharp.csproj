@@ -62,9 +62,6 @@
      <Compile Include="Assets\Scripts\Game\startGame.cs" />
      <Compile Include="Assets\Scripts\Game\target.cs" />
      <Compile Include="Assets\Scripts\Helper\tagHelper.cs" />
-     <Compile Include="Assets\Scripts\Intro\intro.cs" />
-     <Compile Include="Assets\Scripts\Intro\levelGenerator.cs" />
-     <Compile Include="Assets\Scripts\Intro\replay.cs" />
      <Compile Include="Assets\Scripts\Level Editor\Colour Picker\ColorHuePicker.cs" />
      <Compile Include="Assets\Scripts\Level Editor\Colour Picker\ColorIndicator.cs" />
      <Compile Include="Assets\Scripts\Level Editor\Colour Picker\ColorSaturationBrightnessPicker.cs" />
@@ -77,6 +74,9 @@
      <Compile Include="Assets\Scripts\Level Editor\Create Star\starName.cs" />
      <Compile Include="Assets\Scripts\Level Editor\Edit Stars\buttonBehaviour.cs" />
      <Compile Include="Assets\Scripts\Level Editor\Edit Stars\moveStars.cs" />
+     <Compile Include="Assets\Scripts\Post Game\countdown.cs" />
+     <Compile Include="Assets\Scripts\Post Game\levelGenerator.cs" />
+     <Compile Include="Assets\Scripts\Post Game\replay.cs" />
      <None Include="Assets\Shaders\SolidColor.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />

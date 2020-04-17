@@ -63,6 +63,9 @@ public class startGame : MonoBehaviour
    */
   public void StartGame()
   {
+    // Reset number of old bullets floating about
+    GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().timeout = 0;
+    
     
     // Remove force from bullet
     GameObject.FindGameObjectWithTag("Active Bullet").transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
