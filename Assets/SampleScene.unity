@@ -239,7 +239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e40862b72933c4edd90709cdcc66a7be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletRecord: []
+  activeBulletMovement: []
 --- !u!1 &67087754
 GameObject:
   m_ObjectHideFlags: 0
@@ -715,6 +715,7 @@ GameObject:
   - component: {fileID: 401956187}
   - component: {fileID: 401956189}
   - component: {fileID: 401956191}
+  - component: {fileID: 401956188}
   m_Layer: 0
   m_Name: Star
   m_TagString: Star
@@ -817,6 +818,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &401956188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401956182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 064ab7e10aca6433c85780a8ad761b2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mass: 0
 --- !u!114 &401956189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4873,6 +4887,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   newStar: {fileID: 0}
+  numberOfStars: 0
 --- !u!1 &1679251693
 GameObject:
   m_ObjectHideFlags: 0
