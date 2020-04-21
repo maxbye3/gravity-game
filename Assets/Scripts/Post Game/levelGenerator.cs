@@ -9,9 +9,14 @@ public class levelGenerator : MonoBehaviour
   public GameObject newStar;
   private bool isRotating;
   public int numberOfStars;
+  public string testLayout;
 
   void Start()
   {
+    testLayout =  "no stars";
+    // testLayout =  "close star";
+    // testLayout =  "basic star system";
+    
     /*
     * Star layouts
     */
@@ -41,8 +46,8 @@ public class levelGenerator : MonoBehaviour
     float[] y7 = new float[6] { 1f, -1f, 3f, -3f, -1f, 1f };
 
     // Test One Planet Layout
-    float[] x8 = new float[1] { -2 };
-    float[] y8 = new float[1] { -2 };
+    float[] x8 = new float[1] { -4.5f };
+    float[] y8 = new float[1] { 0f };
     // Test Two PlanetLayout
     float[] x9 = new float[2] { -2, 2 };
     float[] y9 = new float[2] { -2, 2 };
@@ -88,8 +93,12 @@ public class levelGenerator : MonoBehaviour
   public void FixedUpdate()
   {
     // 50% chance stars will rotate
-    if (isRotating)
+    if (isRotating && testLayout != "close star")
     {
+      rotateStars();
+    }
+
+    if (testLayout == "basic star"){
       rotateStars();
     }
   }
@@ -128,6 +137,15 @@ public class levelGenerator : MonoBehaviour
     // Select layouts 1 to 9
     int range = Random.Range(0, 8);
     // range = 10; // UNCOMMENT FOR TESTING ENVIRONMENT (NO STARS) or change layout (see above)
+    if(testLayout == "no stars"){
+      range = 10;
+    }
+    if (testLayout == "close star"){
+      range = 8;      
+    }    
+    if (testLayout == "basic star system"){
+      range = 9;      
+    }
 
     // record the number of stars
     numberOfStars = coordinates[range][0].Length;
@@ -156,7 +174,9 @@ public class levelGenerator : MonoBehaviour
       var starScale = newStar.GetComponent<RectTransform>().localScale;
       // Set size between 1 and 4
       int newScale = Random.Range(1, 4);
-      // newScale = 1; // uncomment this so all the planets are small
+      if (testLayout == "close star"){
+        newScale = 4;
+      }        
       newStar.GetComponent<RectTransform>().localScale = new Vector3(newScale, newScale, starScale.z);
 
       /*
@@ -164,7 +184,9 @@ public class levelGenerator : MonoBehaviour
       */
       // Set mass between 1 and 5
       int mass = Random.Range(1, 6);
-      // mass = 1; // uncomment this and all planets have very no mass 
+      if (testLayout == "close star"){
+        mass = 4;
+      }   
       newStar.GetComponent<starsPull>().mass = mass / 2;
 
       // Set planet color to star

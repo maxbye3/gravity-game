@@ -29,7 +29,7 @@ public class loser : MonoBehaviour
    * - Change the UI
    * - Launch replay
    */
-  public void Loser(string player)
+  public void Loser(string player, string hitBy)
   {
     // Show bullet (if hidden)
     GameObject.FindGameObjectWithTag("Active Bullet").gameObject.GetComponent<MeshRenderer>().enabled = true;
@@ -50,6 +50,8 @@ public class loser : MonoBehaviour
     // Turn off box collider on Active Bullet (it fucks the replay and initial bullet position)
     GameObject.FindGameObjectWithTag("Active Bullet").gameObject.GetComponent<SphereCollider>().enabled = false;
 
+    // Set what the player was hit by
+    Debug.Log("hitBy: " + hitBy);
     // Set the player text to read "Replay"
     GameObject.FindGameObjectWithTag("Player Text").GetComponent<TextMeshPro>().SetText("Replay");
 
