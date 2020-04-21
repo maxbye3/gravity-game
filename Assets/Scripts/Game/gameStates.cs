@@ -74,6 +74,7 @@ public class gameStates : MonoBehaviour
 
       // Clone bullet
       GameObject newBullet = Instantiate(bullet, GetComponent<startGame>().playerSpecifics(), Quaternion.identity);
+      bullet.tag = "Untagged";
 
       // Change bullet tag so old bullet just floats till round end
       // GameObject.FindGameObjectWithTag("Helper").GetComponent<tagHelper>().AddTag("Old Bullet" + timeout);
