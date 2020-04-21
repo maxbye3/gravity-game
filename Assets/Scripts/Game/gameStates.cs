@@ -79,6 +79,7 @@ public class gameStates : MonoBehaviour
       // Change bullet tag so old bullet just floats till round end
       // GameObject.FindGameObjectWithTag("Helper").GetComponent<tagHelper>().AddTag("Old Bullet" + timeout);
       bullet.transform.gameObject.name = "Old Bullet" + timeout;
+      bullet.transform.gameObject.tag = "Old Bullet";
       // Show old bullet
       bullet.gameObject.GetComponent<MeshRenderer>().enabled = true;
 

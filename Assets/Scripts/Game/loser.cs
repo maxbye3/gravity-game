@@ -51,7 +51,7 @@ public class loser : MonoBehaviour
     GameObject.FindGameObjectWithTag("Active Bullet").gameObject.GetComponent<SphereCollider>().enabled = false;
 
     // Set what the player was hit by
-    Debug.Log("hitBy: " + hitBy);
+    GameObject.FindGameObjectWithTag("GameController").GetComponent<replay>().destroyedBy = hitBy;
     // Set the player text to read "Replay"
     GameObject.FindGameObjectWithTag("Player Text").GetComponent<TextMeshPro>().SetText("Replay");
 

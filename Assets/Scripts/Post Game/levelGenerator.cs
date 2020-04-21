@@ -13,9 +13,9 @@ public class levelGenerator : MonoBehaviour
 
   void Start()
   {
-    // testLayout =  "no stars";
+    testLayout =  "no stars";
     // testLayout =  "close star";
-    testLayout =  "basic star system";
+    // testLayout =  "basic star system";
     
     /*
     * Star layouts

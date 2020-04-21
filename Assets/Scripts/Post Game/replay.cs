@@ -8,6 +8,7 @@ public class replay : MonoBehaviour
   public List<Vector3> activeBulletMovement = new List<Vector3>();
   public List<List<Vector3>> starMovements = new List<List<Vector3>>();
   public List<List<Vector3>> bulletMovements = new List<List<Vector3>>();
+  public string destroyedBy;
 
   private int i = 0;
   void Start()
@@ -19,7 +20,8 @@ public class replay : MonoBehaviour
 
   // Update is called once per frame
   void FixedUpdate()
-  {
+  {    
+    Debug.Log("destroyedBy: " + destroyedBy);
     // Number of stars in game
     int numberOfStars = GameObject.FindGameObjectWithTag("Intro").GetComponent<levelGenerator>().numberOfStars;
 
