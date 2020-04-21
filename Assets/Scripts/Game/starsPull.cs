@@ -40,7 +40,7 @@ public class starsPull : MonoBehaviour
   */
   void planetGravity(string tagname)
   {
-    GameObject nonPlanetObject = GameObject.FindGameObjectWithTag(tagname);
+    GameObject nonPlanetObject = GameObject.Find(tagname);
     if (nonPlanetObject)
     { // if exists
       //  Get distance from planet
@@ -48,7 +48,7 @@ public class starsPull : MonoBehaviour
       //  Get direction from planet
       Vector3 direction = transform.position - nonPlanetObject.transform.position;
       // Pulling bullet towards planet
-      GameObject.FindGameObjectWithTag(tagname).GetComponent<Rigidbody>().AddForce(mass * direction / Mathf.Pow(distance, 1f / 3f));
+      GameObject.Find(tagname).GetComponent<Rigidbody>().AddForce(mass * direction / Mathf.Pow(distance, 1f / 3f));
     }
   }
 }

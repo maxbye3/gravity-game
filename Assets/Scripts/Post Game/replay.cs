@@ -40,7 +40,7 @@ public class replay : MonoBehaviour
       // Record stars 
       for (var j = 0; j < numberOfStars; j++)
       {
-        starMovements[j].Add(GameObject.FindGameObjectWithTag("New Star" + j).transform.position);
+        starMovements[j].Add(GameObject.Find("New Star" + j).transform.position);
       }
 
       // Record old bullets
@@ -48,7 +48,7 @@ public class replay : MonoBehaviour
       { // if old bullets exist
         for (int k = 0; k < numberOfOldBullets; k++)
         {
-          bulletMovements[k].Add(GameObject.FindGameObjectWithTag("Old Bullet" + k).transform.position);
+          bulletMovements[k].Add(GameObject.Find("Old Bullet" + k).transform.position);
         }
       }
 
@@ -63,14 +63,15 @@ public class replay : MonoBehaviour
       // Replay on stars      
       for (var j = 0; j < numberOfStars; j++)
       {
-        GameObject.FindGameObjectWithTag("New Star" + j).transform.position = starMovements[j][i];
+        GameObject.Find("New Star" + j).transform.position = starMovements[j][i];
       }
 
       // Replay on bullets     
-      for (var k = 0; k < numberOfOldBullets; k++)
-      {
-        GameObject.FindGameObjectWithTag("Old Bullet" + k).transform.position = bulletMovements[k][i];
-      }
+      Debug.Log("numberOfOldBullets: " + numberOfOldBullets);
+      // for (var k = 0; k < numberOfOldBullets; k++)
+      // {
+      //   GameObject.Find("Old Bullet" + k).transform.position = bulletMovements[k][i];
+      // }
 
 
       // Debug.Log("Amount of replay time:" + i);

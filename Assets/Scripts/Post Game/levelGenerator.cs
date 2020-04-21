@@ -13,9 +13,9 @@ public class levelGenerator : MonoBehaviour
 
   void Start()
   {
-    testLayout =  "no stars";
+    // testLayout =  "no stars";
     // testLayout =  "close star";
-    // testLayout =  "basic star system";
+    testLayout =  "basic star system";
     
     /*
     * Star layouts
@@ -83,9 +83,9 @@ public class levelGenerator : MonoBehaviour
   {
     for (var i = 0; i < numberOfStars; i++)
     {
-      GameObject.FindGameObjectWithTag("New Star" + i).transform.RotateAround(new Vector3(0, 0, 0), new Vector3(0, 0, 5), 1);
-      var starPos = GameObject.FindGameObjectWithTag("New Star" + i).transform.position;
-      GameObject.FindGameObjectWithTag("New Star Text" + i).transform.position = new Vector3(starPos.x, starPos.y, -1);
+      GameObject.Find("New Star" + i).transform.RotateAround(new Vector3(0, 0, 0), new Vector3(0, 0, 5), 1);
+      var starPos = GameObject.Find("New Star" + i).transform.position;
+      GameObject.Find("New Star Text" + i).transform.position = new Vector3(starPos.x, starPos.y, -1);
 
     }
   }
@@ -206,8 +206,8 @@ public class levelGenerator : MonoBehaviour
       * Sun Tag assignment - unique tag
       * Assign sun with new tag so they it be destroyed (and not the original)
       */
-      GameObject.FindGameObjectWithTag("Helper").GetComponent<tagHelper>().AddTag("New Star" + i);
-      newStar.transform.gameObject.tag = "New Star" + i;
+      // GameObject.FindGameObjectWithTag("Helper").GetComponent<tagHelper>().AddTag("New Star" + i);
+      newStar.transform.gameObject.name = "New Star" + i;
 
       /*
       * Sun Text
@@ -239,8 +239,8 @@ public class levelGenerator : MonoBehaviour
       * Sun Text Tag assignment - unique tag
       * Assign sun's text with new tag so they it be destroyed (and not the original)
       */
-      GameObject.FindGameObjectWithTag("Helper").GetComponent<tagHelper>().AddTag("New Star Text" + i);
-      newStarText.transform.gameObject.tag = "New Star Text" + i;
+      // GameObject.FindGameObjectWithTag("Helper").GetComponent<tagHelper>().AddTag("New Star Text" + i);
+      newStarText.transform.gameObject.name = "New Star Text" + i;
     }
   }
 
@@ -252,8 +252,8 @@ public class levelGenerator : MonoBehaviour
     // Destroy star and text with new star tag
     for (var i = 0; i < numberOfStars; i++)
     {
-      Destroy(GameObject.FindGameObjectWithTag("New Star" + i));
-      Destroy(GameObject.FindGameObjectWithTag("New Star Text" + i));
+      Destroy(GameObject.Find("New Star" + i));
+      Destroy(GameObject.Find("New Star Text" + i));
     }
   }
 

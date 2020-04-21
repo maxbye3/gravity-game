@@ -76,8 +76,8 @@ public class gameStates : MonoBehaviour
       GameObject newBullet = Instantiate(bullet, GetComponent<startGame>().playerSpecifics(), Quaternion.identity);
 
       // Change bullet tag so old bullet just floats till round end
-      GameObject.FindGameObjectWithTag("Helper").GetComponent<tagHelper>().AddTag("Old Bullet" + timeout);
-      bullet.transform.gameObject.tag = "Old Bullet" + timeout;
+      // GameObject.FindGameObjectWithTag("Helper").GetComponent<tagHelper>().AddTag("Old Bullet" + timeout);
+      bullet.transform.gameObject.name = "Old Bullet" + timeout;
       // Show old bullet
       bullet.gameObject.GetComponent<MeshRenderer>().enabled = true;
 

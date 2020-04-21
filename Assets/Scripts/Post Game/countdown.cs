@@ -97,7 +97,7 @@ public class countdown : MonoBehaviour
 
     for (int i = 0; i < numberOfOldBullets; i++)
     { // Destroy every old bullet
-      Destroy(GameObject.FindGameObjectWithTag("Old Bullet" + i));
+      Destroy(GameObject.Find("Old Bullet" + i));
     }
   }
 
