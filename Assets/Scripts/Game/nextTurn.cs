@@ -30,8 +30,9 @@ public class nextTurn : MonoBehaviour
     GameObject.FindGameObjectWithTag("Power Meter").GetComponent<power>().powerLevel = 0;
     // Let bullet be shot again and stop resetting of game
     GameObject.FindGameObjectWithTag("Active Bullet").GetComponent<firingBullet>().shotFired = false;
-    // Hide bullet
-    GameObject.FindGameObjectWithTag("Active Bullet").gameObject.GetComponent<MeshRenderer>().enabled = false;
+
+    // Hide bullet TEMP
+    // GameObject.FindGameObjectWithTag("Active Bullet").gameObject.GetComponent<MeshRenderer>().enabled = false;
 
   }
 

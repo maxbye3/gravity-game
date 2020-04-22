@@ -82,12 +82,15 @@ public class gameStates : MonoBehaviour
       bullet.transform.gameObject.tag = "Old Bullet";
       // Show old bullet
       bullet.gameObject.GetComponent<MeshRenderer>().enabled = true;
+      
+      // Make new bullet not harmful
+      GameObject.FindGameObjectWithTag("Active Bullet").gameObject.GetComponent<SphereCollider>().enabled = false;
 
       // Iterate round number (round over)
       round += 1;
       // Iterate round number (round over)
       timeout += 1;
-
+      Debug.Log(timeout);
     }
   }
 

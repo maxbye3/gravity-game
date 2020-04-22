@@ -11,17 +11,15 @@ public class replay : MonoBehaviour
   public string destroyedBy;
 
   private int i = 0;
+  List<int> roundStartTime = new List<int>();
   void Start()
   {
-    /*
-    * Setup old bullet tracking
-    */
+    roundStartTime.Add(0);
   }
 
   // Update is called once per frame
   void FixedUpdate()
-  {    
-    Debug.Log("destroyedBy: " + destroyedBy);
+  {
     // Number of stars in game
     int numberOfStars = GameObject.FindGameObjectWithTag("Intro").GetComponent<levelGenerator>().numberOfStars;
 
@@ -32,7 +30,7 @@ public class replay : MonoBehaviour
     // Record position of bullet as soon as ball starts moving
     if (
       GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().gameState == "game" // if in game state record
-      && GameObject.FindGameObjectWithTag("Active Bullet").GetComponent<firingBullet>().shotFired // shot fired
+      // && GameObject.FindGameObjectWithTag("Active Bullet").GetComponent<firingBullet>().shotFired // shot fired
       )
     {
       i = 0;
@@ -46,13 +44,16 @@ public class replay : MonoBehaviour
       }
 
       // Record old bullets
+      // Debug.Log("numberOfOldBullets: " + GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().timeout);
       if (numberOfOldBullets > 0)
       { // if old bullets exist
         for (int k = 0; k < numberOfOldBullets; k++)
-        {
+        {          
+          Debug.Log(k);
           bulletMovements[k].Add(GameObject.Find("Old Bullet" + k).transform.position);
         }
       }
+
 
     }
     else if (
@@ -60,7 +61,11 @@ public class replay : MonoBehaviour
     )
     {
       // Replay on bullet
-      GameObject.FindGameObjectWithTag("Active Bullet").transform.position = activeBulletMovement[i];
+      if (destroyedBy == "Active Bullet")
+      {
+        // Debug.Log("destroyed By Active Bullet: " + destroyedBy);
+        GameObject.FindGameObjectWithTag("Active Bullet").transform.position = activeBulletMovement[i];
+      }
 
       // Replay on stars      
       for (var j = 0; j < numberOfStars; j++)
@@ -68,12 +73,19 @@ public class replay : MonoBehaviour
         GameObject.Find("New Star" + j).transform.position = starMovements[j][i];
       }
 
-      // Replay on bullets     
-      Debug.Log("numberOfOldBullets: " + numberOfOldBullets);
-      // for (var k = 0; k < numberOfOldBullets; k++)
-      // {
-      //   GameObject.Find("Old Bullet" + k).transform.position = bulletMovements[k][i];
-      // }
+      // Replay on bullets    
+      if (destroyedBy == "Old Bullet")
+      {
+        // Debug.Log("destroyed By Old Bullet: " + numberOfOldBullets);
+        for (var k = 0; k < numberOfOldBullets; k++)
+        {
+          // Debug.Log("bulletMovements[k]:" + bulletMovements[k].Count);
+          // Debug.Log("i:" + i);
+          if(i < bulletMovements[k].Count){
+            GameObject.Find("Old Bullet" + k).transform.position = bulletMovements[k][i];
+          }
+        }
+      }
 
 
       // Debug.Log("Amount of replay time:" + i);
@@ -88,6 +100,7 @@ public class replay : MonoBehaviour
         activeBulletMovement.Clear();
 
         // Delete bullet movement lists
+        Debug.Log("DESTROY OLD BULLETS");
         for (var k = 0; k < numberOfOldBullets; k++)
         {
           bulletMovements[k].Clear();

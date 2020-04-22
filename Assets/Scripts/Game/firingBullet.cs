@@ -45,11 +45,12 @@ public class firingBullet : MonoBehaviour
     // Start timeout counter and change player if bullets faffing about
     StartCoroutine(GameObject.FindGameObjectWithTag("GameController").gameObject.GetComponent<gameStates>().TurnTimeout(timeout));
 
-    // Everytime shot is fired then reset the bullet data count
+    // Everytime shot is fired take note of previous MAX BYE
     GameObject.FindGameObjectWithTag("GameController").GetComponent<replay>().activeBulletMovement.Clear();
 
     // Make bullet harmful
     GameObject.FindGameObjectWithTag("Active Bullet").gameObject.GetComponent<SphereCollider>().enabled = true;
+
     // Show bullet
     GameObject.FindGameObjectWithTag("Active Bullet").gameObject.GetComponent<MeshRenderer>().enabled = true;
 
