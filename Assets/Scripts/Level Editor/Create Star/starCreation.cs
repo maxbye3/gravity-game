@@ -43,12 +43,12 @@ public class starCreation : MonoBehaviour
     // clone old star and position new sun
     newStar = Instantiate(sun, new Vector3(5, 0, -4), Quaternion.identity);
     // assign sun with new tag
-    GameObject.FindGameObjectWithTag("Helper").GetComponent<tagHelper>().AddTag("New Star");
+    // GameObject.FindGameObjectWithTag("Helper").GetComponent<tagHelper>().AddTag("New Star");
     newStar.transform.gameObject.tag = "New Star";
     // assign child object with tag
-    GameObject.FindGameObjectWithTag("Helper").GetComponent<tagHelper>().AddTag("New Star Name");
+    // GameObject.FindGameObjectWithTag("Helper").GetComponent<tagHelper>().AddTag("New Star Name");
     GameObject sunName = newStar.transform.GetChild(0).gameObject;
-    GameObject.FindGameObjectWithTag("Helper").GetComponent<tagHelper>().AddTag("New Star Name");
+    // GameObject.FindGameObjectWithTag("Helper").GetComponent<tagHelper>().AddTag("New Star Name");
     sunName.transform.gameObject.tag = "New Star Name";
   }
 

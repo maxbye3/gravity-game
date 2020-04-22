@@ -71,8 +71,8 @@ public class startGame : MonoBehaviour
     GameObject.FindGameObjectWithTag("Active Bullet").transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
     GameObject.FindGameObjectWithTag("Active Bullet").transform.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
 
-    // Turn off box collider on Active Bullet (it fucks with the initial bullet position)
-    GameObject.FindGameObjectWithTag("Active Bullet").gameObject.GetComponent<SphereCollider>().enabled = false;
+    // Turn off box collider on Active Bullet (it fucks with the initial bullet position) TEMP
+    // GameObject.FindGameObjectWithTag("Active Bullet").gameObject.GetComponent<SphereCollider>().enabled = false;
 
     // Change global game state
     GetComponent<gameStates>().gameState = "game";

@@ -16,6 +16,7 @@ public class playerHit : MonoBehaviour
     {
       // Lost player explosion
       GameObject.FindGameObjectWithTag("Red").GetComponent<fireworks>().StartFireworks(gameObject.tag);
+      
       // Declares a loser
       GameObject.FindGameObjectWithTag("GameController").GetComponent<loser>().Loser(gameObject.tag, collision.gameObject.tag);
     }
