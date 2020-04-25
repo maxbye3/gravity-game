@@ -64,7 +64,7 @@ public class startGame : MonoBehaviour
   public void StartGame()
   {
     // Reset number of old bullets floating about
-    GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().timeout = 0;
+    GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().bulletNumber = 0;
     
     
     // Remove force from bullet
@@ -83,7 +83,7 @@ public class startGame : MonoBehaviour
     // Remove force from bullet doesn't quite work so I made a timeout as well
     GameObject.FindGameObjectWithTag("Active Bullet").transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
     GameObject.FindGameObjectWithTag("Active Bullet").transform.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-    // This timeout should stop the bullets (hopefully!)
+    // This timeout stops the active bullet moving  
     StartCoroutine(StopBullet(0.2f));
 
     // Hide bullet TEMP

@@ -20,6 +20,8 @@ public class nextTurn : MonoBehaviour
   {
     // Int target
     GameObject target = GameObject.FindGameObjectWithTag("Target");
+    // Make new bullet not harmful
+    GameObject.FindGameObjectWithTag("Active Bullet").gameObject.GetComponent<SphereCollider>().enabled = false;
     // Show target
     target.gameObject.GetComponent<MeshRenderer>().enabled = true;
     // Re-enable target
@@ -33,6 +35,7 @@ public class nextTurn : MonoBehaviour
 
     // Hide bullet TEMP
     // GameObject.FindGameObjectWithTag("Active Bullet").gameObject.GetComponent<MeshRenderer>().enabled = false;
+
 
   }
 

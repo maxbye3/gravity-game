@@ -20,6 +20,11 @@ public class playerHit : MonoBehaviour
       // Declares a loser
       GameObject.FindGameObjectWithTag("GameController").GetComponent<loser>().Loser(gameObject.tag, collision.gameObject.tag);
     }
+
+    if(GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().gameState == "replay"){
+    // Clear all replay data TEMP
+    // GameObject.FindGameObjectWithTag("GameController").GetComponent<replay>().clearReplayData();
+    }
   }
 
 }

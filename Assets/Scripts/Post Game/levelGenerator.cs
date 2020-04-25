@@ -14,8 +14,8 @@ public class levelGenerator : MonoBehaviour
   void Start()
   {
     testLayout =  "no stars";
-    // testLayout =  "close star";
-    // testLayout =  "basic star system";
+    testLayout =  "close star";
+    testLayout =  "basic star system";
     
     /*
     * Star layouts
@@ -98,7 +98,7 @@ public class levelGenerator : MonoBehaviour
       rotateStars();
     }
 
-    if (testLayout == "basic star"){
+    if (testLayout == "basic star system"){
       rotateStars();
     }
   }
@@ -148,6 +148,7 @@ public class levelGenerator : MonoBehaviour
     }
 
     // record the number of stars
+    // Debug.Log("numberOfStars:" + coordinates[range]);
     numberOfStars = coordinates[range][0].Length;
     
     for (var i = 0; i < numberOfStars; i++)

@@ -15,7 +15,7 @@ public class gameStates : MonoBehaviour
   public string gameState; // whose round is it
   public string howDoesGameStart;
   public int round = 0; // how many rounds
-  public int timeout = 0;
+  public int bulletNumber = 0;
 
   void Start()
   { // Start is called before the first frame update
@@ -56,13 +56,6 @@ public class gameStates : MonoBehaviour
     int roundAtTimeOfShot = round;
 
     yield return new WaitForSeconds(seconds);
-          /* 
-      * Bullet tracking
-      * Create the correct number of lists to track bullets
-      */
-      GameObject.FindGameObjectWithTag("GameController").GetComponent<replay>().bulletMovements.Add(new List<Vector3>());
-      
-
     if (
       round == roundAtTimeOfShot // Check if we're in the same round
       && GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().gameState == "game" // if playing game
@@ -70,27 +63,10 @@ public class gameStates : MonoBehaviour
     {
       GetComponent<nextTurn>().NextTurn(); // Reset the game
 
-      GameObject bullet = GameObject.FindGameObjectWithTag("Active Bullet"); // int bullet
-
-      // Clone bullet
-      GameObject newBullet = Instantiate(bullet, GetComponent<startGame>().playerSpecifics(), Quaternion.identity);
-      bullet.tag = "Untagged";
-
-      // Change bullet tag so old bullet just floats till round end
-      // GameObject.FindGameObjectWithTag("Helper").GetComponent<tagHelper>().AddTag("Old Bullet" + timeout);
-      bullet.transform.gameObject.name = "Old Bullet" + timeout;
-      bullet.transform.gameObject.tag = "Old Bullet";
-      // Show old bullet
-      bullet.gameObject.GetComponent<MeshRenderer>().enabled = true;
-      
-      // Make new bullet not harmful
-      GameObject.FindGameObjectWithTag("Active Bullet").gameObject.GetComponent<SphereCollider>().enabled = false;
-
       // Iterate round number (round over)
       round += 1;
       // Iterate round number (round over)
-      timeout += 1;
-      Debug.Log(timeout);
+      // timeout += 1;
     }
   }
 

@@ -25,7 +25,7 @@ public class starsPull : MonoBehaviour
     }
 
     // number of old bullets
-    int numberOfOldBullets = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().timeout;
+    int numberOfOldBullets = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().bulletNumber;
 
     for (int i = 0; i < numberOfOldBullets; i++)
     { // for every old bullet
