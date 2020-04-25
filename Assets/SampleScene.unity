@@ -244,6 +244,8 @@ MonoBehaviour:
   roundStartTime: 0
   roundTime: 0
   roundStartTimes: 
+  bulletToReplay: 0
+  starCounter: 0
 --- !u!1 &67087754
 GameObject:
   m_ObjectHideFlags: 0
@@ -6046,7 +6048,7 @@ MonoBehaviour:
   bulletInitialGreenPos: {x: 6.6, y: 0.5, z: 0}
   powerConstant: 10
   shotFired: 0
-  timeout: 1
+  timeout: 4
   bulletForce: {x: 0, y: 0, z: 0}
 --- !u!1 &1753199773
 GameObject:
