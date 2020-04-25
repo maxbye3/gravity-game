@@ -53,7 +53,7 @@ public class replay : MonoBehaviour
 
 
       // RECORD STARS    
-      Debug.Log("Recording stars");
+      // Debug.Log("Recording stars");
       for (var j = 0; j < numberOfStars; j++)
       {
         starMovements[j].Add(GameObject.Find("New Star" + j).transform.position);
@@ -78,39 +78,29 @@ public class replay : MonoBehaviour
     )
     {
 
+      roundTime += 1;
+
       // Replay on stars   
       for (var j = 0; j < numberOfStars; j++)
       {
         if (roundTime < starMovements[j].Count)
         {
           GameObject.Find("New Star" + j).transform.position = starMovements[j][roundTime];
-        }
+        }         
       }
 
-      // Replay on bullets    
-      //   for (var k = 0; k < numberOfOldBullets; k++)
-      //   {
-      //     // Debug.Log("bulletMovements[k]:" + bulletMovements[k].Count);
-      //     {
-      //       GameObject.Find("Old Bullet" + k).transform.position = bulletMovements[k][roundTime];
-      //     }
-
-      //     // Clear bullet data
-      //     // clearReplayData();
-
-      //   }
-      // }
-
-          Debug.Log("roundTime:" + roundTime);
+      /*
+      * REPLAY ON BULLETS
+      */
+          // Debug.Log("roundTime:" + roundTime);
           Debug.Log("bulletMovements[bulletToReplay].Count:" + bulletMovements[bulletToReplay].Count);
       if (roundTime < bulletMovements[bulletToReplay].Count){
         GameObject.Find("Old Bullet" + bulletToReplay).transform.position = bulletMovements[bulletToReplay][roundTime];
       } else {
-          // GameObject.Find("Old Bullet" + bulletToReplay).GetComponent<MeshRenderer>().enabled = false;
+          GameObject.Find("Old Bullet" + bulletToReplay).GetComponent<MeshRenderer>().enabled = false;
+          GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().gameState = "game";
+          roundTime = 0;
         }
-      // Debug.Log("Amount of replay time:" + i);
-      roundTime += 1;
-
     }
   }
 
@@ -126,7 +116,7 @@ public class replay : MonoBehaviour
       if (roundTime >= bulletMovements[i].Count) // replay is over
       {
         // Create new game
-        GameObject.FindGameObjectWithTag("Intro").GetComponent<levelGenerator>().CreateNewLevel();
+        GameObject.FindGameObjectWithTag("Intro").GetComponent<levelGenerator>().CreateNewLevel();        
         Debug.Log("Clear bullets");
         // Clear bullet record
         bulletMovements[i].Clear();
@@ -134,7 +124,6 @@ public class replay : MonoBehaviour
         // Delete bullet movement lists
         //  Debug.Log("destroyed By Old Bullet: " + numberOfOldBullets);
         // Debug.Log("DESTROY OLD BULLETS");
-        roundTime = 0;
 
         // Clear star data
         int numberOfStars = GameObject.FindGameObjectWithTag("Intro").GetComponent<levelGenerator>().numberOfStars;
@@ -149,6 +138,7 @@ public class replay : MonoBehaviour
   public void bookmarkTime()
   {
     roundStartTimes.Add(roundStartTime);
+    roundStartTime = 0;
   }
 }
 

@@ -52,7 +52,15 @@ public class firingBullet : MonoBehaviour
     
     // bookmarks the time that a round starts
     GameObject.FindGameObjectWithTag("GameController").GetComponent<replay>().bookmarkTime();
-    Debug.Log("BOOKMARK TIME"); 
+
+
+
+    // Clear star data
+    int numberOfStars = GameObject.FindGameObjectWithTag("Intro").GetComponent<levelGenerator>().numberOfStars;
+    for (var j = 0; j < numberOfStars; j++)
+    {
+      GameObject.FindGameObjectWithTag("GameController").GetComponent<replay>().starMovements[j].Clear();
+    }
 
 
     /*

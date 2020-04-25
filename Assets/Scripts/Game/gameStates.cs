@@ -56,6 +56,7 @@ public class gameStates : MonoBehaviour
     int roundAtTimeOfShot = round;
 
     yield return new WaitForSeconds(seconds);
+      // Debug.Log("Timout working");
     if (
       round == roundAtTimeOfShot // Check if we're in the same round
       && GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().gameState == "game" // if playing game

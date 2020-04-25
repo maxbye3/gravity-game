@@ -18,6 +18,7 @@ public class nextTurn : MonoBehaviour
 
   public void NextTurn()
   {
+    // Debug.Log("Next turn begin");
     // Int target
     GameObject target = GameObject.FindGameObjectWithTag("Target");
     // Make new bullet not harmful
