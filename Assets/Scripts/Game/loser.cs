@@ -29,11 +29,11 @@ public class loser : MonoBehaviour
    * - Change the UI
    * - Launch replay
    */
-  public void Loser(string player)
+  public void Loser(string player, string hitBy)
   {
     // Show bullet (if hidden)
     GameObject.FindGameObjectWithTag("Active Bullet").gameObject.GetComponent<MeshRenderer>().enabled = true;
- 
+
     // iterate round number
     GetComponent<gameStates>().round += 1;
 
@@ -44,12 +44,21 @@ public class loser : MonoBehaviour
     // Rescale the power meter to original size.
     GameObject.FindGameObjectWithTag("Power Meter").GetComponent<power>().ResetPowerMeter();
 
-    // Change game state to replay
-    GetComponent<gameStates>().gameState = "replay";
+    // Set the correct player to start new game - Not happy with this - solve later -  
+    GameObject.FindGameObjectWithTag("GameController").GetComponent<startGame>().playerSpecifics();
+
+    /*
+    * REPLAY
+    */
+    GameObject.FindGameObjectWithTag("GameController").GetComponent<replay>().roundTime = 0;
+    GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().gameState = "replay";
+    // replay
 
     // Turn off box collider on Active Bullet (it fucks the replay and initial bullet position)
     GameObject.FindGameObjectWithTag("Active Bullet").gameObject.GetComponent<SphereCollider>().enabled = false;
 
+    // Set what the player was hit by
+    GameObject.FindGameObjectWithTag("GameController").GetComponent<replay>().destroyedBy = hitBy;
     // Set the player text to read "Replay"
     GameObject.FindGameObjectWithTag("Player Text").GetComponent<TextMeshPro>().SetText("Replay");
 

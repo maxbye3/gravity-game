@@ -35,7 +35,7 @@ public class startGame : MonoBehaviour
   {
     playerTxt = GameObject.FindGameObjectWithTag("Player Text").GetComponent<TextMeshPro>(); // int player text
     bullet = GameObject.FindGameObjectWithTag("Active Bullet"); // bullet
-
+    playerTxt.enabled = false;
     // get active player
     string player = GetComponent<gameStates>().activePlayer;
     if (player == "Red")
@@ -64,7 +64,7 @@ public class startGame : MonoBehaviour
   public void StartGame()
   {
     // Reset number of old bullets floating about
-    GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().timeout = 0;
+    GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().bulletNumber = 0;
     
     
     // Remove force from bullet
@@ -83,8 +83,12 @@ public class startGame : MonoBehaviour
     // Remove force from bullet doesn't quite work so I made a timeout as well
     GameObject.FindGameObjectWithTag("Active Bullet").transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
     GameObject.FindGameObjectWithTag("Active Bullet").transform.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-    // This timeout should stop the bullets (hopefully!)
+    // This timeout stops the active bullet moving  
     StartCoroutine(StopBullet(0.2f));
+    
+    // Show whose turn it is
+    var playerTxt = GameObject.FindGameObjectWithTag("Player Text").GetComponent<TextMeshPro>(); // int player text
+    playerTxt.enabled = true;
 
     // Hide bullet
     GameObject.FindGameObjectWithTag("Active Bullet").gameObject.GetComponent<MeshRenderer>().enabled = false;
@@ -96,6 +100,6 @@ public class startGame : MonoBehaviour
     yield return new WaitForSeconds(seconds);
     // Remove force from bullet
     GameObject.FindGameObjectWithTag("Active Bullet").transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
-    GameObject.FindGameObjectWithTag("Active Bullet").transform.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+    GameObject.FindGameObjectWithTag("Active Bullet").transform.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;    
   }
 }

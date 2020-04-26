@@ -21,7 +21,7 @@ public class firingBullet : MonoBehaviour
    */
   void FireBullet(int powerLevel)
   {
-
+    
     /*
      * Target & bullet
      */
@@ -42,17 +42,59 @@ public class firingBullet : MonoBehaviour
     powerLevel = 0;
     // Not sure why this bool was needed and the above line doesn't stop force being added to bullet but it is
     shotFired = true;
+
     // Start timeout counter and change player if bullets faffing about
     StartCoroutine(GameObject.FindGameObjectWithTag("GameController").gameObject.GetComponent<gameStates>().TurnTimeout(timeout));
 
-    // TEMP: Everytime shot is fired then reset the bullet data count
-    GameObject.FindGameObjectWithTag("GameController").GetComponent<replay>().activeBulletMovement.Clear();
+    // Everytime shot is fired take note of previous MAX BYE
+    // GameObject.FindGameObjectWithTag("GameController").GetComponent<replay>().activeBulletMovement.Clear();
+    // roundStartTime.Add();
+    
+    // bookmarks the time that a round starts
+    GameObject.FindGameObjectWithTag("GameController").GetComponent<replay>().bookmarkTime();
 
-    // Make bullet harmful
-    GameObject.FindGameObjectWithTag("Active Bullet").gameObject.GetComponent<SphereCollider>().enabled = true;
-    // Show bullet
-    GameObject.FindGameObjectWithTag("Active Bullet").gameObject.GetComponent<MeshRenderer>().enabled = true;
 
+
+    // Clear star data
+    int numberOfStars = GameObject.FindGameObjectWithTag("Intro").GetComponent<levelGenerator>().numberOfStars;
+    for (var j = 0; j < numberOfStars; j++)
+    {
+      GameObject.FindGameObjectWithTag("GameController").GetComponent<replay>().starMovements[j].Clear();
+    }
+
+
+    /*
+    * TURNS ACTIVE BULLET INTO OLD BULLET
+    */
+      /* 
+      * Bullet tracking
+      * Create the correct number of lists to track bullets
+      */
+      // GameObject.FindGameObjectWithTag("Last Bullet Functionality").GetComponent<replyLastShot>().bulletMovements.Add(new List<Vector3>());
+      GameObject.FindGameObjectWithTag("GameController").GetComponent<replay>().bulletMovements.Add(new List<Vector3>());
+      
+
+      // Make bullet harmful
+      GameObject.FindGameObjectWithTag("Active Bullet").gameObject.GetComponent<SphereCollider>().enabled = true;
+
+      // Show bullet
+      GameObject.FindGameObjectWithTag("Active Bullet").gameObject.GetComponent<MeshRenderer>().enabled = true;
+      /*
+      * TURN ACTIVE BULLET INTO OLD BULLET
+      */
+      // Clone bullet
+      GameObject newBullet = Instantiate(bullet, GameObject.FindGameObjectWithTag("GameController").GetComponent<startGame>().playerSpecifics(), Quaternion.identity);
+      bullet.tag = "Untagged";
+      // Change bullet tag so old bullet just floats till round end
+      int bulletNumber = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().bulletNumber;
+      // Debug.Log("bulletNumber: " + bulletNumber);
+      bullet.transform.gameObject.name = "Old Bullet" + bulletNumber;
+      bullet.transform.gameObject.tag = "Old Bullet";
+      // Show old bullet
+      bullet.gameObject.GetComponent<MeshRenderer>().enabled = true;
+      // Iterate bullet number
+      GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().bulletNumber += 1;
+    // turn active bullet into old bullet
   }
 
   void Update() // Update is called once per frame.

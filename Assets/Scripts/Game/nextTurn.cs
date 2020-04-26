@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 public class nextTurn : MonoBehaviour
 {
   /*
@@ -18,8 +19,11 @@ public class nextTurn : MonoBehaviour
 
   public void NextTurn()
   {
+    // Debug.Log("Next turn begin");
     // Int target
     GameObject target = GameObject.FindGameObjectWithTag("Target");
+    // Make new bullet not harmful
+    GameObject.FindGameObjectWithTag("Active Bullet").gameObject.GetComponent<SphereCollider>().enabled = false;
     // Show target
     target.gameObject.GetComponent<MeshRenderer>().enabled = true;
     // Re-enable target
@@ -30,8 +34,15 @@ public class nextTurn : MonoBehaviour
     GameObject.FindGameObjectWithTag("Power Meter").GetComponent<power>().powerLevel = 0;
     // Let bullet be shot again and stop resetting of game
     GameObject.FindGameObjectWithTag("Active Bullet").GetComponent<firingBullet>().shotFired = false;
+
     // Hide bullet
     GameObject.FindGameObjectWithTag("Active Bullet").gameObject.GetComponent<MeshRenderer>().enabled = false;
+
+
+    // Show whose turn it is
+    var playerTxt = GameObject.FindGameObjectWithTag("Player Text").GetComponent<TextMeshPro>(); // int player text
+    playerTxt.enabled = true;
+
 
   }
 

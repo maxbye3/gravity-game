@@ -93,11 +93,11 @@ public class countdown : MonoBehaviour
   void removeOldBullets()
   {
     // number of old bullets
-    int numberOfOldBullets = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().timeout;
+    int numberOfOldBullets = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().bulletNumber;
 
     for (int i = 0; i < numberOfOldBullets; i++)
     { // Destroy every old bullet
-      Destroy(GameObject.FindGameObjectWithTag("Old Bullet" + i));
+      Destroy(GameObject.Find("Old Bullet" + i));
     }
   }
 

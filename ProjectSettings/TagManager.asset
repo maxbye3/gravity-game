@@ -34,6 +34,7 @@ TagManager:
   - Win Text
   - Green Lost Text
   - Red Lost Text
+  - Last Bullet Functionality
   layers:
   - Default
   - TransparentFX

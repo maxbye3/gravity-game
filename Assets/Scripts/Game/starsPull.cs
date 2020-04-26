@@ -25,7 +25,7 @@ public class starsPull : MonoBehaviour
     }
 
     // number of old bullets
-    int numberOfOldBullets = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().timeout;
+    int numberOfOldBullets = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().bulletNumber;
 
     for (int i = 0; i < numberOfOldBullets; i++)
     { // for every old bullet
@@ -40,7 +40,7 @@ public class starsPull : MonoBehaviour
   */
   void planetGravity(string tagname)
   {
-    GameObject nonPlanetObject = GameObject.FindGameObjectWithTag(tagname);
+    GameObject nonPlanetObject = GameObject.Find(tagname);
     if (nonPlanetObject)
     { // if exists
       //  Get distance from planet
@@ -48,7 +48,7 @@ public class starsPull : MonoBehaviour
       //  Get direction from planet
       Vector3 direction = transform.position - nonPlanetObject.transform.position;
       // Pulling bullet towards planet
-      GameObject.FindGameObjectWithTag(tagname).GetComponent<Rigidbody>().AddForce(mass * direction / Mathf.Pow(distance, 1f / 3f));
+      GameObject.Find(tagname).GetComponent<Rigidbody>().AddForce(mass * direction / Mathf.Pow(distance, 1f / 3f));
     }
   }
 }
