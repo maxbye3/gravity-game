@@ -35,7 +35,7 @@ public class startGame : MonoBehaviour
   {
     playerTxt = GameObject.FindGameObjectWithTag("Player Text").GetComponent<TextMeshPro>(); // int player text
     bullet = GameObject.FindGameObjectWithTag("Active Bullet"); // bullet
-
+    playerTxt.enabled = false;
     // get active player
     string player = GetComponent<gameStates>().activePlayer;
     if (player == "Red")
@@ -85,9 +85,13 @@ public class startGame : MonoBehaviour
     GameObject.FindGameObjectWithTag("Active Bullet").transform.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
     // This timeout stops the active bullet moving  
     StartCoroutine(StopBullet(0.2f));
+    
+    // Show whose turn it is
+    var playerTxt = GameObject.FindGameObjectWithTag("Player Text").GetComponent<TextMeshPro>(); // int player text
+    playerTxt.enabled = true;
 
     // Hide bullet TEMP
-    // GameObject.FindGameObjectWithTag("Active Bullet").gameObject.GetComponent<MeshRenderer>().enabled = false;
+    GameObject.FindGameObjectWithTag("Active Bullet").gameObject.GetComponent<MeshRenderer>().enabled = false;
 
   }
 

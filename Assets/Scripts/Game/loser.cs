@@ -47,32 +47,10 @@ public class loser : MonoBehaviour
     /*
     * REPLAY
     */
-    // Change game state to replay
-    // GetComponent<gameStates>().gameState = "replay";
-    // GameObject.FindGameObjectWithTag("GameController").GetComponent<replay>().roundStartTime = 0;
-    // var roundBeganTimes = GameObject.FindGameObjectWithTag("GameController").GetComponent<replay>().roundStartTimes;
-    // // int latestRoundTime = (int) roundBeganTimes[(roundBeganTimes.Count - 1)];
-    // // int timeBeforeLastRound = (int) roundBeganTimes[(roundBeganTimes.Count - 2)];
-    // // int latestRoundTimeMinusTimeout = latestRoundTime - 150;
-
-    // //   Debug.Log("timeBeforeLastRound: " + timeBeforeLastRound);
-    // //   Debug.Log("timeBeforeLastRound - 150: " + latestRoundTimeMinusTimeout);
-    // //   // Debug.Log("latestRoundTime: " + latestRoundTime);
-    // // if (latestRoundTimeMinusTimeout < timeBeforeLastRound)
-    // // {
-    // //   Debug.Log("Too quick! Reverting to previous round.");
-    // //   GameObject.FindGameObjectWithTag("GameController").GetComponent<replay>().roundTime = latestRoundTime;
-    // // }
-    // // else
-    // // {
-    // //   Debug.Log("Last round");
-    // // }
-
-    // Fire last 2
-      // GameObject.FindGameObjectWithTag("GameController").GetComponent<replay>().roundTime = timeBeforeLastRound;
-      // GameObject.FindGameObjectWithTag("GameController").GetComponent<replay>().roundTime = 0;
-      
+    GameObject.FindGameObjectWithTag("GameController").GetComponent<replay>().roundTime = 0;
+    GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().gameState = "replay";
     // replay
+
     // Turn off box collider on Active Bullet (it fucks the replay and initial bullet position)
     GameObject.FindGameObjectWithTag("Active Bullet").gameObject.GetComponent<SphereCollider>().enabled = false;
 

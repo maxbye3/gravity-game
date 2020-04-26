@@ -62,8 +62,8 @@ public class gameStates : MonoBehaviour
       && GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().gameState == "game" // if playing game
       )
     {
-      GetComponent<nextTurn>().NextTurn(); // Reset the game
-
+      // Reset the game
+      GetComponent<nextTurn>().NextTurn(); 
       // Iterate round number (round over)
       round += 1;
       // Iterate round number (round over)

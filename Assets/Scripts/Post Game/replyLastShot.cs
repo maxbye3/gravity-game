@@ -3,8 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class replay : MonoBehaviour
+public class replyLastShot : MonoBehaviour
 {
+
+  /*
+  * NOT QUITE DONE - STILL QUITE BUGGY SEE COMMENTS
+  */ 
+
   public List<Vector3> activeBulletMovement = new List<Vector3>();
   public List<List<Vector3>> starMovements = new List<List<Vector3>>();
   public List<List<Vector3>> bulletMovements = new List<List<Vector3>>();
@@ -13,7 +18,7 @@ public class replay : MonoBehaviour
 
   public int roundTime = 0;
   public List<int> roundStartTimes = new List<int>();
-
+  public int bulletToReplay;
 
   public int starCounter = 0;
   void Start()
@@ -37,17 +42,17 @@ public class replay : MonoBehaviour
       GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().gameState == "game" // if in game state record                                                                                                        // && GameObject.FindGameObjectWithTag("Active Bullet").GetComponent<firingBullet>().shotFired // shot fired
       )
     {
-      if (numberOfOldBullets > 0)  // if old bullets exist
+      if (numberOfOldBullets > 0)
+      { // if old bullets exist
+
+
+      // RECORD STARS    
+      for (var j = 0; j < numberOfStars; j++)
       {
+        starMovements[j].Add(GameObject.Find("New Star" + j).transform.position);
+      }
 
-
-        // RECORD STARS    
-        for (var j = 0; j < numberOfStars; j++)
-        {
-          starMovements[j].Add(GameObject.Find("New Star" + j).transform.position);
-        }
-
-        // RECORD BULLETS
+        // Debug.Log("old bullet position: " + GameObject.Find("Old Bullet0").transform.position);
         for (int k = 0; k < numberOfOldBullets; k++)
         {
           // Debug.Log("numberOfOldBullets: " + GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().bulletNumber);
@@ -62,65 +67,54 @@ public class replay : MonoBehaviour
 
     }
     else if (
-      GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().gameState == "replay" // if in game in replay state then replay shot
+      GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().gameState == "last shot" // if in game in replay state then replay shot
     )
     {
 
       roundTime += 1;
 
-      /*
-      * Replay on stars   
-      */
+      // Replay on stars   
       for (var j = 0; j < numberOfStars; j++)
       {
         if (roundTime < starMovements[j].Count)
         {
           GameObject.Find("New Star" + j).transform.position = starMovements[j][roundTime];
-        }
+        }         
       }
 
       /*
       * REPLAY ON BULLETS
+      * Bug where bullets dissapear pre-maturely i.e. not recording full bulletMovements[bulletToReplay].Count
       */
-      // Debug.Log("Number Of Bullets: " + numberOfOldBullets);
-      for (int k = 0; k < numberOfOldBullets; k++)
-      {
-        if (roundTime < bulletMovements[k].Count)
-        {
-
-        Debug.Log("roundTime:" + roundTime);
-        Debug.Log("bulletMovements[k].Count:" + bulletMovements[k].Count);
-          for (var j = 0; j < numberOfOldBullets; j++)
-          {
-            GameObject.Find("Old Bullet" + k).transform.position = bulletMovements[k][roundTime];
-          }
-        }      
-      }
-
-      clearReplayData();
-
+          // Debug.Log("roundTime:" + roundTime);
+          // Debug.Log("bulletMovements[bulletToReplay].Count:" + bulletMovements[bulletToReplay].Count);
+      if (roundTime < bulletMovements[bulletToReplay].Count){
+        GameObject.Find("Old Bullet" + bulletToReplay).transform.position = bulletMovements[bulletToReplay][roundTime];
+      } else {
+          GameObject.Find("Old Bullet" + bulletToReplay).GetComponent<MeshRenderer>().enabled = false;
+          GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().gameState = "game";
+          roundTime = 0;
+          
+        }
     }
   }
 
-  /*
-  * CLEAR REPLAY DATA
-  * Clears movement data
-  */
   public void clearReplayData()
   {
+   
+
     // Number of old bullets in game
     int numberOfOldBullets = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().bulletNumber;
 
     for (var i = 0; i < numberOfOldBullets; i++)
     {
-      // Debug.Log("bulletMovements[bulletToReplay].Count:" + bulletMovements[i].Count);
       if (roundTime >= bulletMovements[i].Count) // replay is over
       {
         // Create new game
-        GameObject.FindGameObjectWithTag("Intro").GetComponent<levelGenerator>().CreateNewLevel();
-        
+        GameObject.FindGameObjectWithTag("Intro").GetComponent<levelGenerator>().CreateNewLevel();        
+
         // Delete bullet movements lists
-        //  Debug.Log("Destroy Old Bullets: " + numberOfOldBullets);
+        //  Debug.Log("destroyed By Old Bullet: " + numberOfOldBullets);
         bulletMovements[i].Clear();
 
         // Clear star data
@@ -131,15 +125,5 @@ public class replay : MonoBehaviour
         }
       }
     }
-  }
-
-  /*
-  * BOOKMARKS THE TIME ROUND START
-  * Not sure if needed
-  */
- public void bookmarkTime()
-  {
-    roundStartTimes.Add(roundStartTime);
-    roundStartTime = 0;
   }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 public class nextTurn : MonoBehaviour
 {
   /*
@@ -34,8 +35,13 @@ public class nextTurn : MonoBehaviour
     // Let bullet be shot again and stop resetting of game
     GameObject.FindGameObjectWithTag("Active Bullet").GetComponent<firingBullet>().shotFired = false;
 
-    // Hide bullet TEMP
-    // GameObject.FindGameObjectWithTag("Active Bullet").gameObject.GetComponent<MeshRenderer>().enabled = false;
+    // Hide bullet
+    GameObject.FindGameObjectWithTag("Active Bullet").gameObject.GetComponent<MeshRenderer>().enabled = false;
+
+
+    // Show whose turn it is
+    var playerTxt = GameObject.FindGameObjectWithTag("Player Text").GetComponent<TextMeshPro>(); // int player text
+    playerTxt.enabled = true;
 
 
   }

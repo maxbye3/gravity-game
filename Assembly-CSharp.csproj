@@ -77,6 +77,7 @@
      <Compile Include="Assets\Scripts\Post Game\countdown.cs" />
      <Compile Include="Assets\Scripts\Post Game\levelGenerator.cs" />
      <Compile Include="Assets\Scripts\Post Game\replay.cs" />
+     <Compile Include="Assets\Scripts\Post Game\replyLastShot.cs" />
      <None Include="Assets\Shaders\SolidColor.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />

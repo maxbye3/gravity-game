@@ -14,15 +14,15 @@ public class lastButton : MonoBehaviour
       int bulletToReplay = numberOfOldBullets - 1;
       // Debug.Log("Bullet to replay: " + bulletToReplay);
       // What number of bullet to shoot
-      GameObject.FindGameObjectWithTag("GameController").GetComponent<replay>().bulletToReplay = bulletToReplay;
+      GameObject.FindGameObjectWithTag("Last Bullet Functionality").GetComponent<replyLastShot>().bulletToReplay = bulletToReplay;
 
-      var roundTimes = GameObject.FindGameObjectWithTag("GameController").GetComponent<replay>().roundStartTimes;
+      var roundTimes = GameObject.FindGameObjectWithTag("Last Bullet Functionality").GetComponent<replyLastShot>().roundStartTimes;
       // Obtain the time last shot started:
       // int lastShot = (int) roundTimes[(roundTimes.Count - 1)];
       //  Debug.Log("Last shot:" + lastShot);
-      GameObject.FindGameObjectWithTag("GameController").GetComponent<replay>().roundTime = 0;
+      GameObject.FindGameObjectWithTag("Last Bullet Functionality").GetComponent<replyLastShot>().roundTime = 0;
       // Go into replay mode
-      GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().gameState = "replay";
+      GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().gameState = "last shot";
     }
     public void shotBeforeLast()
     {
