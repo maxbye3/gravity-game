@@ -44,6 +44,9 @@ public class loser : MonoBehaviour
     // Rescale the power meter to original size.
     GameObject.FindGameObjectWithTag("Power Meter").GetComponent<power>().ResetPowerMeter();
 
+    // Set the correct player to start new game - Not happy with this - solve later -  
+    GameObject.FindGameObjectWithTag("GameController").GetComponent<startGame>().playerSpecifics();
+
     /*
     * REPLAY
     */

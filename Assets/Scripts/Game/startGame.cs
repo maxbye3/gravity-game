@@ -90,7 +90,7 @@ public class startGame : MonoBehaviour
     var playerTxt = GameObject.FindGameObjectWithTag("Player Text").GetComponent<TextMeshPro>(); // int player text
     playerTxt.enabled = true;
 
-    // Hide bullet TEMP
+    // Hide bullet
     GameObject.FindGameObjectWithTag("Active Bullet").gameObject.GetComponent<MeshRenderer>().enabled = false;
 
   }

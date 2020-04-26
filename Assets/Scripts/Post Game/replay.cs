@@ -88,8 +88,8 @@ public class replay : MonoBehaviour
         if (roundTime < bulletMovements[k].Count)
         {
 
-        Debug.Log("roundTime:" + roundTime);
-        Debug.Log("bulletMovements[k].Count:" + bulletMovements[k].Count);
+        // Debug.Log("roundTime:" + roundTime);
+        // Debug.Log("bulletMovements[k].Count:" + bulletMovements[k].Count);
           for (var j = 0; j < numberOfOldBullets; j++)
           {
             GameObject.Find("Old Bullet" + k).transform.position = bulletMovements[k][roundTime];
@@ -122,6 +122,7 @@ public class replay : MonoBehaviour
         // Delete bullet movements lists
         //  Debug.Log("Destroy Old Bullets: " + numberOfOldBullets);
         bulletMovements[i].Clear();
+        bulletMovements.Clear();
 
         // Clear star data
         int numberOfStars = GameObject.FindGameObjectWithTag("Intro").GetComponent<levelGenerator>().numberOfStars;

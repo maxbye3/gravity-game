@@ -70,7 +70,7 @@ public class firingBullet : MonoBehaviour
       * Bullet tracking
       * Create the correct number of lists to track bullets
       */
-      GameObject.FindGameObjectWithTag("Last Bullet Functionality").GetComponent<replyLastShot>().bulletMovements.Add(new List<Vector3>());
+      // GameObject.FindGameObjectWithTag("Last Bullet Functionality").GetComponent<replyLastShot>().bulletMovements.Add(new List<Vector3>());
       GameObject.FindGameObjectWithTag("GameController").GetComponent<replay>().bulletMovements.Add(new List<Vector3>());
       
 

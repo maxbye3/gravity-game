@@ -45,8 +45,8 @@ public class countdown : MonoBehaviour
  */
   public void StartCountdown()
   {
-    // Hide bullet TEMP
-    // GameObject.FindGameObjectWithTag("Active Bullet").gameObject.GetComponent<MeshRenderer>().enabled = false;
+    // Hide bullet
+    GameObject.FindGameObjectWithTag("Active Bullet").gameObject.GetComponent<MeshRenderer>().enabled = false;
 
     // Show countdown text
     countdownTxt = GameObject.FindGameObjectWithTag("Countdown").GetComponent<TextMeshPro>();

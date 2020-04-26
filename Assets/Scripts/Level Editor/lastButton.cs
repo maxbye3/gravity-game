@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// NOT FINISHED
 public class lastButton : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -14,13 +15,13 @@ public class lastButton : MonoBehaviour
       int bulletToReplay = numberOfOldBullets - 1;
       // Debug.Log("Bullet to replay: " + bulletToReplay);
       // What number of bullet to shoot
-      GameObject.FindGameObjectWithTag("Last Bullet Functionality").GetComponent<replyLastShot>().bulletToReplay = bulletToReplay;
+      // GameObject.FindGameObjectWithTag("Last Bullet Functionality").GetComponent<replyLastShot>().bulletToReplay = bulletToReplay;
 
-      var roundTimes = GameObject.FindGameObjectWithTag("Last Bullet Functionality").GetComponent<replyLastShot>().roundStartTimes;
+      // var roundTimes = GameObject.FindGameObjectWithTag("Last Bullet Functionality").GetComponent<replyLastShot>().roundStartTimes;
       // Obtain the time last shot started:
       // int lastShot = (int) roundTimes[(roundTimes.Count - 1)];
       //  Debug.Log("Last shot:" + lastShot);
-      GameObject.FindGameObjectWithTag("Last Bullet Functionality").GetComponent<replyLastShot>().roundTime = 0;
+      // GameObject.FindGameObjectWithTag("Last Bullet Functionality").GetComponent<replyLastShot>().roundTime = 0;
       // Go into replay mode
       GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().gameState = "last shot";
     }
