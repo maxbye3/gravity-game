@@ -77,13 +77,12 @@ public class firingBullet : MonoBehaviour
       // Make bullet harmful
       GameObject.FindGameObjectWithTag("Active Bullet").gameObject.GetComponent<SphereCollider>().enabled = true;
 
-      // Show bullet
-      GameObject.FindGameObjectWithTag("Active Bullet").gameObject.GetComponent<MeshRenderer>().enabled = true;
       /*
       * TURN ACTIVE BULLET INTO OLD BULLET
       */
       // Clone bullet
       GameObject newBullet = Instantiate(bullet, GameObject.FindGameObjectWithTag("GameController").GetComponent<startGame>().playerSpecifics(), Quaternion.identity);
+      
       bullet.tag = "Untagged";
       // Change bullet tag so old bullet just floats till round end
       int bulletNumber = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().bulletNumber;
