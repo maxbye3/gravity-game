@@ -15,7 +15,7 @@ public class levelGenerator : MonoBehaviour
   {
     // testLayout =  "no stars";
     // testLayout =  "close star";
-    // testLayout =  "basic star system";
+    testLayout =  "basic star system";
     
     /*
     * Star layouts
@@ -79,27 +79,12 @@ public class levelGenerator : MonoBehaviour
   {
     return angles * (point - pivot) + pivot;
   }
-  void rotateStars()
-  {
-    for (var i = 0; i < numberOfStars; i++)
-    {
-      GameObject.Find("New Star" + i).transform.RotateAround(new Vector3(0, 0, 0), new Vector3(0, 0, 5), 1);
-      var starPos = GameObject.Find("New Star" + i).transform.position;
-      GameObject.Find("New Star Text" + i).transform.position = new Vector3(starPos.x, starPos.y, -1);
-
-    }
-  }
 
   public void FixedUpdate()
   {
     // 50% chance stars will rotate
-    if (isRotating && testLayout != "close star")
-    {
-      rotateStars();
-    }
-
-    if (testLayout == "basic star system"){
-      rotateStars();
+    if (testLayout != "close star"){
+      GameObject.FindGameObjectWithTag("Star").GetComponent<starProperties>().startRotating();
     }
   }
 
@@ -125,7 +110,11 @@ public class levelGenerator : MonoBehaviour
     // 50% chance stars will rotates
     if (Random.value >= 0.5)
     {
-      isRotating = true;
+      GameObject.FindGameObjectWithTag("Star").GetComponent<starProperties>().isRotating = true;
+    }
+
+    if (testLayout == "basic star system"){
+      GameObject.FindGameObjectWithTag("Star").GetComponent<starProperties>().isRotating = true;
     }
 
     // IF RANDOM: How many stars between 1 and 3
