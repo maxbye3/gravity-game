@@ -19,8 +19,8 @@ public class nextTurn : MonoBehaviour
 
   public void NextTurn()
   {
-    // Debug.Log("Next turn begin");
-    // Int target
+    
+   // Int target
     GameObject target = GameObject.FindGameObjectWithTag("Target");
     // Make new bullet not harmful
     GameObject.FindGameObjectWithTag("Active Bullet").gameObject.GetComponent<SphereCollider>().enabled = false;

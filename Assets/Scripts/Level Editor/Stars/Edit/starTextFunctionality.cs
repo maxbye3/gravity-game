@@ -35,7 +35,8 @@ public class starTextFunctionality : MonoBehaviour
     for (var i = 0; i < numberOfStars; i++)
     {
       // set position to star
-      GameObject.Find("New Star Text" + i).transform.position = GameObject.Find("New Star" + i).transform.position;
+      Vector3 starPos = GameObject.Find("New Star" + i).transform.position;
+      GameObject.Find("New Star Text" + i).transform.position = new Vector3(starPos.x, starPos.y, -1);
     }
   }
 }

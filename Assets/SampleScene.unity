@@ -1033,6 +1033,7 @@ GameObject:
   - component: {fileID: 401956189}
   - component: {fileID: 401956191}
   - component: {fileID: 401956188}
+  - component: {fileID: 401956190}
   m_Layer: 0
   m_Name: Star
   m_TagString: Star
@@ -1160,6 +1161,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 722acc933f8f547609e978908299a4a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &401956190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401956182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a36a082e540e442daaecb0afbaafcb47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isRotating: 0
 --- !u!222 &401956191
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4055,7 +4069,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1175033734
 Transform:
   m_ObjectHideFlags: 0
@@ -4304,6 +4318,7 @@ GameObject:
   - component: {fileID: 1224577528}
   - component: {fileID: 1224577527}
   - component: {fileID: 1224577526}
+  - component: {fileID: 1224577530}
   m_Layer: 0
   m_Name: Star Text
   m_TagString: Star text
@@ -4495,6 +4510,18 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &1224577530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1224577524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 349350630cf4640fcac164df523898a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1287062104
 GameObject:
   m_ObjectHideFlags: 0
@@ -4881,13 +4908,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00e13860caf924b9d9d539b222586ad6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeBulletMovement: []
-  destroyedBy: 
-  roundStartTime: 0
-  roundTime: 0
-  roundStartTimes: 
-  bulletToReplay: 0
-  starCounter: 0
 --- !u!1 &1412152060
 GameObject:
   m_ObjectHideFlags: 0
@@ -5656,7 +5676,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1570129515
 Transform:
   m_ObjectHideFlags: 0

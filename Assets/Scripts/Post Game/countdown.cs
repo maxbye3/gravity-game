@@ -105,6 +105,7 @@ public class countdown : MonoBehaviour
   // Countdown ends after 3 seconds and game is started
   IEnumerator EndCountdown(int seconds)
   {
+
     // Remove old bullets
     removeOldBullets();
     //yield on a new YieldInstruction that waits for seconds.
@@ -117,6 +118,7 @@ public class countdown : MonoBehaviour
     GameObject.FindGameObjectWithTag(lostPlayer).gameObject.GetComponent<MeshRenderer>().enabled = true;
 
     GameObject gameController = GameObject.FindGameObjectWithTag("GameController"); // int global game state
+    // Debug.Log(GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>());
     // Reset game
     gameController.GetComponent<nextTurn>().NextTurn();
     // Find whose turn it is

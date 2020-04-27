@@ -14,9 +14,19 @@ public class buttonBehaviour : MonoBehaviour
 
   public void onButtonEnter()
   {
+
+    string gameState = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().gameState;
+    
+    // Don't disable edit star mode pre-maturely
+    if (gameState == "button hover" || gameState == "drag stars") 
+    {
+      return;
+    }
+
     GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().gameState = "button hover"; // We are in game state (not intro)
     // Star creator mode is on
-    if(GameObject.FindGameObjectWithTag("Create Star Functionality").GetComponent<starCreationMenu>().sunCreated == true) { 
+    if (GameObject.FindGameObjectWithTag("Create Star Functionality").GetComponent<starCreationMenu>().sunCreated == true)
+    {
       starEditing = true; // set button back to game
     }
   }
@@ -37,7 +47,7 @@ public class buttonBehaviour : MonoBehaviour
   }
 
   public void onButtonClick()
-  {    
+  {
     GameObject.FindGameObjectWithTag("Create Star Functionality").GetComponent<starCreationMenu>().closeMenu();
     TextMeshProUGUI buttonText = GameObject.FindGameObjectWithTag("Edit Stars Text").GetComponent<TextMeshProUGUI>();
     if (!starEditing) // Moving planets
@@ -54,17 +64,17 @@ public class buttonBehaviour : MonoBehaviour
       GameObject.FindGameObjectWithTag("Target").gameObject.GetComponent<MeshRenderer>().enabled = false;
 
       // Stop rotation
-     GameObject.FindGameObjectWithTag("Star").GetComponent<starProperties>().isRotating = false;
+      GameObject.FindGameObjectWithTag("Star").GetComponent<starProperties>().isRotating = false;
 
       // Get the positions of bullet and player
-      initialPosOfPlayers(); 
+      initialPosOfPlayers();
 
       // Hide the players / put it somewhere crazy
       GameObject.FindGameObjectWithTag("Green").transform.position = new Vector3(2000f, 2000f, 2000f);
       GameObject.FindGameObjectWithTag("Red").transform.position = new Vector3(4000f, 4000f, 4000f);
-      
+
       // We are dragging stars
-      GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().gameState = "drag stars"; 
+      GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().gameState = "drag stars";
       // Button text change
       buttonText.SetText("Back to game");
       // New instruction (will get overwritten if in star creation mode)
@@ -73,7 +83,7 @@ public class buttonBehaviour : MonoBehaviour
       GameObject.FindGameObjectWithTag("Create Star Functionality").GetComponent<starCreationMenu>().saveStar();
       // Cancel star moving next click
       starEditing = !starEditing;
-      
+
     }
     else // Back to fame
     {
@@ -83,7 +93,7 @@ public class buttonBehaviour : MonoBehaviour
       // Enable star text
       GameObject.FindGameObjectWithTag("Star text").GetComponent<starTextFunctionality>().enableStars();
       // Re-align / position star text
-      GameObject.FindGameObjectWithTag("Star text").GetComponent<starTextFunctionality>().enableStars();
+      GameObject.FindGameObjectWithTag("Star text").GetComponent<starTextFunctionality>().realignStarText();
 
       // Show target
       GameObject.FindGameObjectWithTag("Target").gameObject.GetComponent<MeshRenderer>().enabled = false;
@@ -96,9 +106,13 @@ public class buttonBehaviour : MonoBehaviour
       starEditing = !starEditing;
       // Green re-enters
       GameObject.FindGameObjectWithTag("GameController").GetComponent<gameStates>().lostPlayer = "Green"; // Green enters arena (disabled)
-      // Start inro animation
-      GameObject.FindGameObjectWithTag("Intro").GetComponent<countdown>().StartCountdown();
-      
+
+      // Reset game
+      GameObject gameController = GameObject.FindGameObjectWithTag("GameController"); // int global game state
+      gameController.GetComponent<nextTurn>().NextTurn();
+      // Find whose turn it is
+      gameController.GetComponent<startGame>().StartGame();
+
       // Destroy the new planet
       GameObject.FindGameObjectWithTag("Create Star Functionality").GetComponent<starCreationMenu>().destroyStar();
 
